@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Playfair+Display+SC&display=swap');
+
+body {
+    margin: 0px;
+}
+
+main {
+    background-image: url('../Images/gastronomie-savoyarde 1.jpg');
+    background-repeat: no-repeat;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Polices d'écritures */
+
+h1, h2 {
+    font-family: 'Playfair Display SC', 'Times New Roman', Times, serif, sans-serif;
+    color: white;
+}
+
+h2 {
+    margin: 0px;
+    padding: 20px 50px 0px;   
+    text-align: center;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+p, a, h3, h4, label {
+    font-family: 'Montserrat', 'Times New Roman', Times, serif, sans-serif;
+    color: white;
+}
+
+/* HEADER */
+
+    /* background */
+
+header {
+    background-image: url('../Images/7550.jpg');
+    background-repeat: no-repeat;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 0px 30px 0px black;
+}
+
+    /* head */
+
+.head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0px;
+    padding-top: 20px;
+    background-color: rgba(57, 44, 30, 0.7);
+}
+
+.logo {
+    border: solid white 1px;
+    width: 135px;
+    font-size: 25px;
+    font-weight: 400;
+    padding-left: 7px;
+    margin: 0px;
+    text-shadow: 3px 3px 2px black;
+}
+
+.head h2 {
+    text-shadow: 3px 3px 2px black;
+}
+
+/* Boutton inscription/connexion */
+
+.div_inscri_co {
+    height: 45px;
+    position: fixed;
+    top: 0%;
+    right: 0%;
+    background-color: rgba(144, 100, 39, 0.7);
+    border-left: solid 2px antiquewhite;
+    border-bottom: solid 2px antiquewhite;
+    border-radius: 0px 0px 0px 10px;
+    box-shadow: 2px 4px 0px 0px rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; 
+}
+
+.inscri_co {
+    background-color: rgb(57, 44, 30);
+    color: antiquewhite;
+    margin: 0px 10px;
+    padding: 5px;
+    border: solid 2px;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.7);
+}
+
+.inscri_co:hover {
+    transition: font-size 0.2s ease-in-out;
+    font-size: 17px;
+}
+
+.inscri_co:not(:hover) {
+    transition: font-size 0.2s ease-in-out;
+    font-size: 16px;
+}
+
+.inscri_co:active {
+    color: black;
+    background-color: antiquewhite;
+    transition: font-size 0.1s ease-in-out;
+    font-size: 16px;
+}
+
+/* info adress/tél */
+
+.contact_header {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: Solid rgba(0, 0, 0, 0.5) 1px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 30px 0px black;
+    padding: 4px 4px;
+}
+
+/* nav */
+
+nav {
+    background-color: rgba(144, 100, 39, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0px;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 600; 
+}
+nav > a {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+nav > a:hover {
+    transition: font-size 0.4s ease-in-out;
+    font-size: 21px;
+}
+
+nav > a:not(:hover) {
+    transition: font-size 0.4s ease-in-out;
+    font-size: 20px;
+}
+
+.bar_separation {
+    background-color: black;
+    width: 2px;
+    height: 24px;
+    margin: 0px 11px;
+}
+
+.txtnavleft {
+    text-align-last: left;
+}
+
+/* FOOTER */
+
+footer {
+    background-image: url('../Images/7550.jpg');
+    background-repeat: no-repeat;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.titles_footer {
+    background-color: rgba(144, 100, 39, 0.9);
+    box-shadow: 0px 20px 30px 0px black;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+
+.titles_footer :first-child {
+    position: relative;
+    left: -30px;
+}
+
+.para_footer {
+    background-color: rgba(57, 44, 30, 0.7);
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 20px;
+}
+
+.para_footer :first-child {
+    position: relative;
+    top: 20px;
+}
+
+@media screen and (min-width: 440px) {
+    .titles_footer > h3 {
+        margin-top: 10px;
+        position: relative;
+        right: 50px;
+        top: 10px;
+    }
+
+    .titles_footer :first-child {
+        left: initial;
+        right: 93px;
+    }
+        
+};
+
+@media screen and (min-width: 660px) {
+    h2 {
+        font-size: 25px;
+    }
+}
+    
+@media screen and (min-width: 795px) {
+
+    /* HEADER */
+
+    .head {
+        flex-direction: initial;
+        justify-content: space-between;
+        padding: 30px 0px;
+    }
+
+    .logo {
+        position: relative;
+        left: 40px;
+        width: 225px;
+        font-size: 40px;
+    }
+
+    /* info adress/tél */
+
+    .infos {
+        position: relative;
+        right: 40px;
+        
+    }
+
+    /* nav */
+
+    nav > a:hover {
+        font-size: 25px;
+    }
+
+    nav > a:not(:hover) {
+        font-size: 20px;
+    }    
+
+    .bar_separation {
+        height: 30px;   
+        width: 2px;
+        margin: 0px 19px;
+    }
+
+    /* FOOTER */
+}

@@ -1,0 +1,140 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url('../Images/gastronomie-savoyarde 1.jpg');
+    background-repeat: no-repeat;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+}           
+
+h2 {
+    padding: 0px 0px 15px;
+}
+
+form {
+    background-image: url(../Images/Table_rogner.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin: 40px;
+    border: solid 4px rgba(57, 44, 30, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 30px;
+    margin: 30px;
+}
+
+/* css général des champs */
+
+.genre, .identité, .email, .password, .defaut_nbpers, .allergie, .login_button {
+    width: 300px;
+    padding-bottom: 20px;
+    background-color: rgba(57, 44, 30, 0.9);
+    padding: 15px;
+}
+
+.radio {
+    background-color: antiquewhite;
+    padding: 5px;
+    border: solid 2px;
+    border-radius: 10px;
+    width: 130px;
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.7);
+    display: inline-block;
+}
+.radio:hover {
+    box-shadow: inset 2px 2px 0px 0px rgba(0, 0, 0, 0.7);
+}
+
+input[type="radio"] + label {
+    color: black;
+    font-weight: 600;
+}
+
+textarea, input {
+    background-color: antiquewhite;
+    border: solid 2px;
+    border-radius: 5px;
+}
+
+/* css spécifiques à un champ */
+
+.identité, .email, .password {
+    display: flex;
+    flex-direction: column;
+}
+
+.allergie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* css pour le script */
+
+.form-container {
+    display: none;
+}
+.form-container.active {
+    display: block;
+}
+
+/* validation button */
+
+button {
+    margin-bottom: 15px;
+    background-color: rgb(57, 44, 30);
+    color: antiquewhite;
+    padding: 5px;
+    border: solid 2px;
+    border-radius: 10px;
+    width: 120px;
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.7);
+}
+
+button:hover {
+    box-shadow: inset 0px 0px 20px 5px rgba(0, 0, 0, 0.7);
+}
+
+button:active {
+    color: black;
+    background-color: antiquewhite;
+    transform: scale(0.9);
+}
+
+.login_button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_button > a {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.login_button > a:hover {
+    color: rgb(144, 100, 39);
+}
+
+.login_button > a:active {
+    color: antiquewhite;
+}
+
+@media screen and (max-width: 410px) {
+    form {
+        padding: 0px 10px 10px 10px;
+    }
+}

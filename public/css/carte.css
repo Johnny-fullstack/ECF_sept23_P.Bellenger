@@ -1,0 +1,172 @@
+.carte {
+    border-radius: 2x;
+    box-shadow: 0px, 0px, 20px, 0px;
+    padding: 0px 10px 10px 10px;
+    margin: 40px;
+}
+
+.entrées, .boissons, .plats, .menus, .fromages, .dessert, .boissons_chaudes {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding-top: 10px;
+    margin: 10px 0px;
+}
+
+.carte  p {
+    text-shadow: 2px 2px 2px black;
+}
+
+/* Titres */
+
+.boissons > h3 {
+    position: relative;
+    left: 17px;
+}
+
+h3:not(.titles_footer > h3) {
+    font-family: 'Playfair Display SC', sans-serif;
+    font-weight: 300;
+    text-shadow: 2px 2px 2px black;
+    border: solid 1px ;
+    width: 120px;
+    padding-left: 2px;
+    margin-top: 10px;
+    position: relative;
+    left: 10px;
+}
+
+h4 {
+    position: relative;
+    left: 10px;
+    text-shadow: 2px 2px 2px black;
+}
+
+/* grid */
+
+.grid_4_2 {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: repeat(4, auto);
+    justify-content: space-around;
+    margin: 0px 5px;
+}
+
+.grid_boissons {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(4, auto);
+    justify-content: space-around;
+    margin: 0px 5px;
+}
+
+.grid_plats_desserts {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: repeat(5, auto);
+    justify-content: space-around;
+    margin: 0px 5px;
+}
+
+.grid_3_2 {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: repeat(3, 100px);
+    justify-content: space-around;
+    margin: 0px 5px;
+}
+
+.grid_apéritifs {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: repeat(2, 30px);
+    justify-content: space-around;
+    margin: 0px 5px;
+}
+
+.bois_grid_3_2 {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: repeat(3, 30px);
+    justify-content: space-around;
+    margin: 0px 5px;
+}
+
+.grid_prix {
+    text-align: right;
+}
+
+em {
+    font-size: 12px;
+    font-weight: 300;
+}
+
+@media screen and (min-width: 942px) {
+    .carte {
+        width: 80%;
+        max-width: 1200px;
+        padding-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, 364.812px);
+        grid-template-rows: repeat(4, auto);
+        justify-content: center;
+        grid-gap: 10px;
+        grid-template-areas:
+        "entrees menus"
+        "plats plats"
+        "desserts fromages"
+        "boissons boissonschaudes"
+        ;
+    }
+
+    .entrées, .boissons, .plats, .menus, .fromages, .dessert, .boissons_chaudes {
+        margin: 0px;
+    }
+
+    .entrées {
+        grid-area: entrees;
+    } 
+    .boissons {
+        grid-area: boissons;
+    } 
+    .plats {
+        grid-area: plats;
+    } 
+    .menus {
+        grid-area: menus;
+    } 
+    .fromages {
+        grid-area: fromages;
+    } 
+    .dessert {
+        grid-area: desserts;
+    } 
+    .boissons_chaudes {
+        grid-area: boissonschaudes;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .carte {
+        width: 90%;
+        grid-template-columns: repeat(3, 364.812px);
+        grid-template-rows: auto, 364.812px, 364.812px;
+        justify-content: center;
+        grid-gap: 10px;
+        grid-template-areas:
+        "entrees plats fromages"
+        "boissons plats desserts"
+        "boissons menus boissonschaudes"
+        ;
+    }
+
+    .imgboissons {
+        background-image: url(../Images/boissons-alcoolisees.jpg);
+        width: 300px;
+        height: 300px;
+        position: relative;
+        bottom: -13px;
+        left: 32.4px;
+        border: solid 1px antiquewhite;
+
+    }
+}

@@ -1,0 +1,32 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+## Routes pageController ##
+
+## Route index.html.twig ##
+home:
+    path: /
+    controller: App\Controller\PageController\IndexController::index
+
+    ## Route carte.html.twig ##
+carte:
+    path: /notre_carte
+    controller: App\Controller\PageController\CarteController::carte
+
+## Route resa.html.twig ##
+resa:
+    path: /reservation
+    controller: App\Controller\PageController\ResaController::resa
+    methods: [GET, POST]
+
+## Route connexion.html.twig ##
+connexion:
+    path: /connexion
+    controller: App\Controller\PageController\ConnexionController::connexion
+    methods: [GET, POST]
+
+
+

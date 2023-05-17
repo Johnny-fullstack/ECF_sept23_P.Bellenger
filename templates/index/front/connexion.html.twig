@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+
+        <meta charset="utf-8"/>
+        <title>Page_identifiant</title>
+        <link rel="stylesheet" type="text/css" href="css/header&footer.css">
+        <link rel="stylesheet" type="text/css" href="css/connexion.css">
+    </head>
+
+    <body>
+
+        <nav>
+            <a class="txtnavleft" href="{{ path('home') }}">Revenir à la page d'Accueil</a>
+        </nav>
+
+        <main>
+            <div id="register-form" class="form-container">
+
+                    <h2>Inscription</h2>
+                    
+                    {% block register_form %}
+
+                        {{ form(Register_form) }} 
+
+                        <div class="login_button">
+                            <a href="{{ path('connexion', {'form': 'login'}) }}">J'ai déjà un compte<a>           
+                        </div>
+
+                    {% endblock %}
+
+            </div>
+        
+            <div id="login-form" class="form-container">
+
+                    <h2>Connexion</h2>
+
+                    {% block login_form %}
+
+                        {{ form(Login_form) }} 
+
+                        <div class="login_button">
+                            <a href="{{ path('connexion', {'form': 'register'}) }}">Je ne suis pas inscris<a>
+                        <div>
+
+                    {% endblock %}
+
+                   
+    
+            </div>
+        </main>
+            <script>
+                var urlParams = new URLSearchParams(window.location.search);
+                var formParam = urlParams.get('form');
+                var registerForm = document.getElementById("register-form");
+                var loginForm = document.getElementById("login-form");
+        
+                if (formParam === 'register') {
+                    registerForm.classList.add("active");
+                    loginForm.classList.remove("active");
+                } else if (formParam === 'login') {
+                    loginForm.classList.add("active");
+                    registerForm.classList.remove("active");
+                }
+            </script>
+
+    </body>
+</html>
