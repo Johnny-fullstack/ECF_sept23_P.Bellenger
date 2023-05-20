@@ -2,23 +2,49 @@
 
 namespace App\Entity;
 
+use App\Repository\AdminRepository;
 use Doctrine\ORM\Mapping as ORM;
 
- /**
-* @ORM\Entity()
-*/
-class Admin {
+#[ORM\Entity(repositoryClass: AdminRepository::class)]
+class Admin
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-    * @ORM\email()
-    * @ORM\Column(type="string", length=50)
-    */
-    private $email;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $email = null;
 
-    /**
-    * @ORM\password()
-    * @ORM\Column(type="string", length=50)
-    */
-    private $password;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $password = null;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(?string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
 }

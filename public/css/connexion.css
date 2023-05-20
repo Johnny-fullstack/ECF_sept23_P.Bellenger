@@ -27,45 +27,63 @@ form {
     background-size: cover;
     margin: 40px;
     border: solid 4px rgba(57, 44, 30, 0.9);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 30px 30px;
     margin: 30px;
 }
 
+#register, #login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 /* css général des champs */
 
-.genre, .identité, .email, .password, .defaut_nbpers, .allergie, .login_button {
+form > div {
     width: 300px;
     padding-bottom: 20px;
     background-color: rgba(57, 44, 30, 0.9);
     padding: 15px;
 }
+form > div > div {
+  margin: 10px;
+  width: 100%;
+}
 
-.radio {
+.radio:hover {
+    box-shadow: inset 2px 2px 0px 0px rgba(0, 0, 0, 0.7);
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"] + label {
+    color: black;
+    font-weight: 600;
     background-color: antiquewhite;
     padding: 5px;
     border: solid 2px;
     border-radius: 10px;
     width: 130px;
     box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.7);
-    display: inline-block;
-}
-.radio:hover {
-    box-shadow: inset 2px 2px 0px 0px rgba(0, 0, 0, 0.7);
 }
 
-input[type="radio"] + label {
-    color: black;
-    font-weight: 600;
+label {
+    margin: 5px;
+    text-align: center;
+}
+
+input[type="radio"]:checked + label {
+    box-shadow: inset 2px 2px 0px 0px rgba(0, 0, 0, 0.7);
 }
 
 textarea, input {
     background-color: antiquewhite;
     border: solid 2px;
     border-radius: 5px;
+    width: 100%;
 }
 
 /* css spécifiques à un champ */
@@ -73,6 +91,15 @@ textarea, input {
 .identité, .email, .password {
     display: flex;
     flex-direction: column;
+}
+
+.genre {
+    margin-top: 7px;
+}
+
+.defaut_nbpers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .allergie {

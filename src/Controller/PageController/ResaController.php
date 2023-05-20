@@ -2,6 +2,7 @@
 
 namespace App\Controller\PageController;
 
+use App\Controller\FormController\ResaFormController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,6 +14,7 @@ class ResaController extends AbstractController
     
     public function resa(): Response
     {
+        
         return $this->render('index/Front/resa.html.twig', [
             'controller_name' => 'ResaController',
         ]);

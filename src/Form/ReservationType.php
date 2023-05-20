@@ -7,8 +7,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Form\NbPersTransformer;
+
 
 class ReservationType extends AbstractType
 {
@@ -63,7 +64,7 @@ class ReservationType extends AbstractType
                 'attr' => ['class' => 'heures']
             ])
 
-            ->add('heure_dîner', ChoiceType::class, [
+            ->add('heure_diner', ChoiceType::class, [
                 'label' => 'Dîner',
                 'choices' => [
                     '19h45' => '19h45',
@@ -96,13 +97,6 @@ class ReservationType extends AbstractType
                 'attr' => ['class' => 'login_button'],
             ]);
 
-    }
-
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-            // configurez ici les options du formulaire
-        ]);
     }
 }
 

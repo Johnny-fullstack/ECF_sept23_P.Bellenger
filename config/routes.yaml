@@ -29,4 +29,15 @@ connexion:
     methods: [GET, POST]
 
 
+## Routes formController ##
+
+## Route resa_form ##
+resa_form:
+    path: /reservation_form
+    controller: App\Controller\FormController\ResaFormController::resaForm
+
+    ## Route connexion_form ##
+connexion_form:
+    path: /connexion_form
+    controller: App\Controller\FormController\ConnexionFormController::connexionForm
 

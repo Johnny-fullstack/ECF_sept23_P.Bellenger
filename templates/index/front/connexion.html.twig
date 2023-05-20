@@ -24,7 +24,7 @@
                         {{ form(Register_form) }} 
 
                         <div class="login_button">
-                            <a href="{{ path('connexion', {'form': 'login'}) }}">J'ai déjà un compte<a>           
+                            <a href="{{ path('connexion_form', {'form': 'login'}) }}">J'ai déjà un compte<a>           
                         </div>
 
                     {% endblock %}
@@ -40,7 +40,7 @@
                         {{ form(Login_form) }} 
 
                         <div class="login_button">
-                            <a href="{{ path('connexion', {'form': 'register'}) }}">Je ne suis pas inscris<a>
+                            <a href="{{ path('connexion_form', {'form': 'register'}) }}">Je ne suis pas inscris<a>
                         <div>
 
                     {% endblock %}
