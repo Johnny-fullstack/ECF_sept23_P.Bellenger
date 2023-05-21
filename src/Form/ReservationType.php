@@ -32,7 +32,7 @@ class ReservationType extends AbstractType
                 'multiple' => false,
                 'attr' => ['class' => 'nbpers']
             ])
-            ->get('nbpers')->addModelTransformer(new NbPersTransformer())
+
            
             ->add('jour', DateType::class, [
                 'label' => 'A la date du',
@@ -95,8 +95,9 @@ class ReservationType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => "Réserver",
                 'attr' => ['class' => 'login_button'],
-            ]);
+            ])
 
+            ->get('nbpers')->addModelTransformer(new NbPersTransformer());
     }
 }
 

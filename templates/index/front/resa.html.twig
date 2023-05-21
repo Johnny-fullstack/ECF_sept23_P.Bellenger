@@ -44,13 +44,13 @@
                 <div class="bar_separation"></div>
                 <a href="{{ path('carte') }}">Notre Carte</a>
                 <div class="bar_separation"></div>
-                <a href="{{ path('resa') }}">Réservation</a>
-            </nav>       
+                <a href="{{ path('resa_form') }}">Réservation</a>
+            </nav>    
         </header>
 
             <main>
 
-                {% block body %}
+                {% block form_resa %}
                     {{ form(form_resa) }} 
                 {% endblock %}
 
