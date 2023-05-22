@@ -120,7 +120,6 @@ textarea, input {
 /* validation button */
 
 button {
-    margin-bottom: 15px;
     background-color: rgb(57, 44, 30);
     color: antiquewhite;
     padding: 5px;
@@ -138,13 +137,6 @@ button:active {
     color: black;
     background-color: antiquewhite;
     transform: scale(0.9);
-}
-
-.login_button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .login_button > a {

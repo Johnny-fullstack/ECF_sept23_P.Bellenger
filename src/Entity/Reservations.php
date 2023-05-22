@@ -21,10 +21,10 @@ class Reservations
     private ?\DateTimeInterface $jour = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $heure_dej = null;
+    private ?string $heure_dej = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $heure_diner = null;
+    private ?string $heure_diner = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $allergies = null;

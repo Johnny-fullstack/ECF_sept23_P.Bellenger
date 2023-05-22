@@ -23,7 +23,7 @@ class ConnexionFormController extends AbstractController
     public function connexionForm(Request $request, EntityManagerInterface $em): Response
     {   
         $user = new User();
-        $Register_form = $this->createForm(RegisterType::class);
+        $Register_form = $this->createForm(RegisterType::class, $user);
         $login_form = $this->createForm(LoginType::class);
 
         $Register_form->handleRequest($request);
@@ -32,6 +32,7 @@ class ConnexionFormController extends AbstractController
         if ($Register_form->isSubmitted() && $Register_form->isValid()) {
             $em->persist($user);
             $em->flush();
+            $this->addFlash('success', 'Incription validé !');
             return $this->redirectToRoute('home');
             };
 
@@ -55,6 +56,7 @@ class ConnexionFormController extends AbstractController
                 // Vérification du mot de passe
                 if ($user && password_verify($password, $user['password'])) {
                     // Authentification réussie
+                    $this->addFlash('success', 'Connexion validé !');
                     header('Location: home');
                     exit();
                 } else {

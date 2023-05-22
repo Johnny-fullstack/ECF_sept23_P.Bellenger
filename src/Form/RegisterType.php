@@ -86,7 +86,7 @@ class RegisterType extends AbstractType
             'attr' => ['class' => 'defaut_nbpers']
         ])
 
-        ->add('allergie', TextareaType::class, [
+        ->add('allergies', TextareaType::class, [
             'label' => 'Indiquez dans le champ ci-dessous s’il y a des allergies dont vous voulez nous faire part :',
             'required' => false,
             'attr' => [

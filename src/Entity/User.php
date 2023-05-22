@@ -16,7 +16,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Assert\Choice]
+    #[Assert\Choice(choices: ['Mr', 'Mme'])]
     #[ORM\Column(length: 255)]
     private ?string $genre = null;
 
@@ -28,7 +28,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[Assert\Choice]
+    #[Assert\Choice(choices: [1, 2, 3, 4, 5, 6])]
     #[ORM\Column()]
     private ?int $defaut_nbpers = null;
 

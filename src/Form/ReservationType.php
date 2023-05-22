@@ -67,6 +67,7 @@ class ReservationType extends AbstractType
             ->add('heure_diner', ChoiceType::class, [
                 'label' => 'Dîner',
                 'choices' => [
+                    '19h30' => '19h30',
                     '19h45' => '19h45',
                     '20h00' => '20h00',
                     '20h15' => '20h15',
@@ -84,7 +85,7 @@ class ReservationType extends AbstractType
                 'attr' => ['class' => 'heures']
             ])
 
-            ->add('allergie', TextareaType::class, [
+            ->add('allergies', TextareaType::class, [
                 'label' => "Indiquez dans le champ ci-dessous s’il y a des allergies dont vous voulez nous faire part :",
                 'attr' => [
                     'rows' => '3', 'cols' => '40',
@@ -99,5 +100,5 @@ class ReservationType extends AbstractType
 
             ->get('nbpers')->addModelTransformer(new NbPersTransformer());
     }
-}
+};
 
