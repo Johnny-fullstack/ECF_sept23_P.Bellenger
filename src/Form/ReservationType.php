@@ -17,6 +17,7 @@ class ReservationType extends AbstractType
     {
         $builder
             ->add('nbpers', ChoiceType::class, [
+                'label' => 'Nombre de personnes :',
                 'choices' => [
                     '1 pers.' => '1pers',
                     '2 pers.' => '2pers',
@@ -35,7 +36,7 @@ class ReservationType extends AbstractType
 
            
             ->add('jour', DateType::class, [
-                'label' => 'A la date du',
+                'label' => 'A la date du :',
                 'widget' => 'single_text',
                 'attr' => [
                     'min' => '2023-05-01', 'max' => '2024-06-30',
@@ -44,7 +45,7 @@ class ReservationType extends AbstractType
             ])
 
             ->add('heure_dej', ChoiceType::class, [
-                'label' => 'Déjeuner',
+                'label' => 'Déjeuner :',
                 'choices' => [
                     '11h30' => '11h30',
                     '11h45' => '11h45',
@@ -56,7 +57,7 @@ class ReservationType extends AbstractType
                     '13h15' => '13h15',
                     '13h30' => '13h30',
                 ],
-                'choice_attr' => function($choice, $key, $value) {
+                'choice_attr' => function() {
                     return ['class' => 'radio'];
                 },
                 'expanded' => true,
@@ -65,7 +66,7 @@ class ReservationType extends AbstractType
             ])
 
             ->add('heure_diner', ChoiceType::class, [
-                'label' => 'Dîner',
+                'label' => 'Dîner :',
                 'choices' => [
                     '19h30' => '19h30',
                     '19h45' => '19h45',
@@ -77,7 +78,7 @@ class ReservationType extends AbstractType
                     '21h15' => '21h15',
                     '21h30' => '21h30',
                 ],
-                'choice_attr' => function($choice, $key, $value) {
+                'choice_attr' => function() {
                     return ['class' => 'radio'];
                 },
                 'expanded' => true,
@@ -100,5 +101,4 @@ class ReservationType extends AbstractType
 
             ->get('nbpers')->addModelTransformer(new NbPersTransformer());
     }
-};
-
+}
