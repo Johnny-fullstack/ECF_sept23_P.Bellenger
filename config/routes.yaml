@@ -38,6 +38,6 @@ resa_form:
 
     ## Route connexion_form ##
 connexion_form:
-    path: /connexion_form
+    path: ./connexion_form
     controller: App\Controller\FormController\ConnexionFormController::connexionForm
 
