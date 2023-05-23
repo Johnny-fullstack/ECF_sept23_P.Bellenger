@@ -18,7 +18,21 @@ class ResaFormController extends AbstractController
     public function resaForm(Request $request, EntityManagerInterface $em): Response 
     {
         $resa = new Reservations();
-        $form_resa = $this->createForm(ReservationType::class, $resa);
+    
+
+        if (isset($_SESSION['id'])) {
+            $userData1 = $_SESSION['defaut_nbpers'];
+            $userData2 = $_SESSION['allergies'];
+
+            $form = $this->createForm(ReservationType::class, $resa, [
+                'nbpers' => $userData1,
+                'allergies' => $userData2,
+            ]);
+
+        } else {
+            $form_resa = $this->createForm(ReservationType::class, $resa);
+        }
+
         $form_resa ->handleRequest($request);
 
         if ($form_resa->isSubmitted() && $form_resa->isValid()) {
@@ -27,6 +41,8 @@ class ResaFormController extends AbstractController
             $this->addFlash('success', 'Réservation validé !');
             return $this->redirectToRoute('home');
             }
+           
+   
 
         return $this->render('index/front/resa.html.twig', [
             'form_resa' => $form_resa,

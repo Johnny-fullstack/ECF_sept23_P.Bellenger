@@ -37,24 +37,15 @@ class ConnexionFormController extends AbstractController
             };
 
             if ($login_form->isSubmitted() && $login_form->isValid()) {
-                // Connexion à la base de données
-                $dsn = "mysql://root:@localhost:3306/db_QuaiAntique";
-                $username = 'nom';
-                $password = 'password';
-                $pdo = new PDO($dsn, $username, $password);
 
-                // Récupération des valeurs du formulaire
-                $email = $_POST['email'];
-                $password = $_POST['password'];
-
-                // Requête pour vérifier les informations d'identification dans la base de données
-                $query = "SELECT * FROM User WHERE email = :email";
-                $stmt = $pdo->prepare($query);
-                $stmt->execute(['email' => $email]);
-                $user = $stmt->fetch(PDO::FETCH_ASSOC);
+                $email = $login_form->get('email')->getData();
+                $password = $login_form->get('password')->getData();
+                
+                $userRepository = $em->getRepository(User::class);
+                $user = $userRepository->findOneBy(['email' => $email]);
 
                 // Vérification du mot de passe
-                if ($user && password_verify($password, $user['password'])) {
+                if ($user && password_verify($password, $user->getPassword())) {
                     // Authentification réussie
                     $this->addFlash('success', 'Connexion validé !');
                     header('Location: home');

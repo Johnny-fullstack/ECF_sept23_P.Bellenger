@@ -5,7 +5,7 @@ namespace App\Entity;
 use App\Repository\ReservationsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: ReservationsRepository::class)]
 class Reservations
 {
@@ -14,16 +14,18 @@ class Reservations
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(nullable: true)]
+    #[Assert\NotBlank]
+    #[ORM\Column()]
     private ?int $nbpers = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[Assert\NotBlank]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $jour = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    #[ORM\Column(type: Types::STRING, nullable: true)]
     private ?string $heure_dej = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    #[ORM\Column(type: Types::STRING, nullable: true)]
     private ?string $heure_diner = null;
 
     #[ORM\Column(length: 255, nullable: true)]

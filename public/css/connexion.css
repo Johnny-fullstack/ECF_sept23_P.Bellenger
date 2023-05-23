@@ -138,10 +138,13 @@ button:active {
     background-color: antiquewhite;
     transform: scale(0.9);
 }
-
+.login_button {
+    text-align: center;
+}
 .login_button > a {
     font-size: 14px;
     font-weight: 400;
+    
 }
 
 .login_button > a:hover {
