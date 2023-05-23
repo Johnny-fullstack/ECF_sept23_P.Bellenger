@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+
+        <meta charset="utf-8"/>
+        <title>Réservation</title>
+        <link rel="stylesheet" type="text/css" href="css/header&footer.css">
+        <link rel="stylesheet" type="text/css" href="css/resa.css">
+    </head>
+
+    <body>
+        
+        <header>
+            <div class="head">
+                <h1 class="logo">Quai<br/> Antique</h1>
+
+                <h2>Réserver une table</h2>
+
+                <div class="infos">
+
+                    <p class="contact_header">
+                        7 Bd Gambetta, <br/>
+                        73000, <br/>
+                        Chambéry
+                    </p>
+
+                    <p class="contact_header">
+                        01.50.64.85.45
+                    </p>
+
+                </div>
+
+                <div class="div_inscri_co">
+                    <a class="inscri_co" href="{{ path('connexion_form', {'form': 'register'}) }}">S'inscrire</a>
+                    <a class="inscri_co" href="{{ path('connexion_form', {'form': 'login'}) }}">Se connecter</a>
+                </div>
+            </div>
+
+            <nav>
+                <a class="txtnavleft" href="{{ path('home') }}">Accueil</a>
+                <div class="bar_separation"></div>
+                <a href="{{ path('carte') }}">Notre Carte</a>
+                <div class="bar_separation"></div>
+                <a href="{{ path('resa_form') }}">Réservation</a>
+            </nav>    
+        </header>
+
+            <main>
+
+                {% block form_resa %}
+                    {{ form(form_resa) }} 
+                {% endblock %}
+
+            </main>
+            
+            <footer>
+
+                <div class="titles_footer">
+                    <h3>Contact</h3>
+
+                    <h3>Horaires</h3>
+                </div>
+                
+                <div class="para_footer">
+                    <p>
+                        Tél: 01.50.64.85.45 <br/>
+                        mail: quai.antique@mail.fr
+                    </p>
+                    
+                    <p>
+                        Ouvert du mardi au samedi <br/>
+                        Au déjeuner : 11h30 à 14h30 <br/>
+                        Au dîner : 19h30 à 22h30
+                    </p>
+                </div>
+
+            </footer>
+     
+    </body>
+</html>
