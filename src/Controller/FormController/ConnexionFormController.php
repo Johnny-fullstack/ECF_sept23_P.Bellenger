@@ -51,7 +51,7 @@ class ConnexionFormController extends AbstractController
             if ($user && $passwordHasher->isPasswordValid($user, $password)) {
                 // Authentification réussie
                 $this->addFlash('success', 'Connexion validé !');
-                header('Location: home');
+                header('Location: https://ecfquaiantique.herokuapp.com/notre_carte');
                 exit();
             } else {
                 // Authentification échouée
