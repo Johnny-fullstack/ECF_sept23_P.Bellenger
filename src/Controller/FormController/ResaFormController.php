@@ -36,4 +36,4 @@ class ResaFormController extends AbstractController
             'form_resa' => $form_resa,
         ]);
     }
-}
+};
