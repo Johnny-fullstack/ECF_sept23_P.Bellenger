@@ -18,20 +18,8 @@ class ResaFormController extends AbstractController
     public function resaForm(Request $request, EntityManagerInterface $em): Response 
     {
         $resa = new Reservations();
-    
 
-        if (isset($_SESSION['id'])) {
-            $userData1 = $_SESSION['defaut_nbpers'];
-            $userData2 = $_SESSION['allergies'];
-
-            $form = $this->createForm(ReservationType::class, $resa, [
-                'nbpers' => $userData1,
-                'allergies' => $userData2,
-            ]);
-
-        } else {
-            $form_resa = $this->createForm(ReservationType::class, $resa);
-        }
+        $form_resa = $this->createForm(ReservationType::class, $resa);
 
         $form_resa ->handleRequest($request);
 
