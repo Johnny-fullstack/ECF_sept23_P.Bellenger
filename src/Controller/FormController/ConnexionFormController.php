@@ -33,7 +33,8 @@ class ConnexionFormController extends AbstractController
             $em->persist($user);
             $em->flush();
             $this->addFlash('success', 'Incription validé !');
-            return $this->redirectToRoute('home');
+            $user->setRoles(['ROLE_USER']);
+            return $this->redirectToRoute('resa_form');
             };
 
         if ($login_form->isSubmitted() && $login_form->isValid()) {
@@ -43,15 +44,14 @@ class ConnexionFormController extends AbstractController
             $userRepository = $em->getRepository(User::class) ;
             $user = $userRepository->findOneBy(['email' => $email]);
 
-           # $user->setPassword($password);
-            # echo "email = " . $email . "<br>";
-            # echo "password = " . $password . "<br>" ;
-            # echo "user->getPassword() = " . $user->getPassword() . "<br>" ; 
             // Vérification du mot de passe
             if ($user && $passwordHasher->isPasswordValid($user, $password)) {
                 // Authentification réussie
                 $this->addFlash('success', 'Connexion validé !');
-                header('Location: https://ecfquaiantique.herokuapp.com/notre_carte');
+                $user->setRoles(['ROLE_USER']);
+                if (in_array('ROLE_USER', $user->getRoles())) {
+                    header('Location: http://symfony.localhost/reservation_form');
+                }
                 exit();
             } else {
                 // Authentification échouée

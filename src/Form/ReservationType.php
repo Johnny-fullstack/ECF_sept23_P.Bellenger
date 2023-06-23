@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -15,6 +16,8 @@ class ReservationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $user = new User();
+
         $builder
             ->add('nbpers', ChoiceType::class, [
                 'label' => 'Nombre de personnes :',
@@ -31,7 +34,8 @@ class ReservationType extends AbstractType
                 },
                 'expanded' => true,
                 'multiple' => false,
-                'attr' => ['class' => 'nbpers']
+                'attr' => ['class' => 'nbpers'],
+                'data' => in_array('ROLE_USER', $user->getRoles()) ? $user->getDefautNbpers() : null
             ])
 
            

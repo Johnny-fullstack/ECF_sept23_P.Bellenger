@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use App\Form\NbPersTransformer;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -155,9 +156,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getDefautNbpers(): ?int
+    public function getDefautNbpers(): ?string
     {
-        return $this->defaut_nbpers;
+        $newConv = new NbPersTransformer();
+        $nbpersConv = $newConv->reverseTransform($this->defaut_nbpers);
+        
+        return $nbpersConv;
     }
 
     public function setDefautNbpers(?int $defaut_nbpers): self

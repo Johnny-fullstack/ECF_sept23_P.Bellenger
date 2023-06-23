@@ -16,6 +16,19 @@
         </nav>
 
         <main>
+
+                {% for flashMessage in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
+
+                {% for flashMessage in app.flashes('error') %}
+                    <div class="alert alert-danger">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
+
             <div id="register-form" class="form-container">
 
                     <h2>Inscription</h2>
