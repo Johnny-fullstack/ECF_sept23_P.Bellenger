@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-## Controller formulaire de réservationl##
+## Controller formulaire de réservationl ##
 class ResaFormController extends AbstractController
 {
     #[Route('/reservation_form', name: 'app_resa_form', methods: ['GET', 'POST'])]
