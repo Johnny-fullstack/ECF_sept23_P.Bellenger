@@ -32,7 +32,7 @@ class ResaFormController extends AbstractController
            
    
 
-        return $this->render('index/front/resa.html.twig', [
+        return $this->render('index/Front/resa.html.twig', [
             'form_resa' => $form_resa,
         ]);
     }
