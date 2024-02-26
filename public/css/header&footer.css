@@ -6,7 +6,7 @@ html, body {
 }
 
 main {
-    background-image: url('../images/gastronomie-savoyarde 1.jpg');
+    background-image: url('../Images/gastronomie-savoyarde 1.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -42,7 +42,7 @@ p, a, h3, h4, li, label {
     /* background */
 
 header {
-    background-image: url('../images/7550.jpg');
+    background-image: url('../Images/7550.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -174,7 +174,7 @@ nav > a:not(:hover) {
 /* FOOTER */
 
 footer {
-    background-image: url('../images/7550.jpg');
+    background-image: url('../Images/7550.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

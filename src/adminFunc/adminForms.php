@@ -32,7 +32,7 @@ if (isset($_FILES['photo'])) {
     // Vérifier s'il n'y a pas d'erreur lors du téléchargement
     if ($fileError === 0) {
         // Déplacer le fichier téléchargé vers le dossier de destination
-        $chemin = "/public/images/$fileName";
+        $chemin = "/public/Images/$fileName";
     
         // Vérifier si le déplacement du fichier s'est bien passé
         if (move_uploaded_file($fileTmpName, $chemin)) {
