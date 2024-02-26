@@ -1,149 +1,112 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Hôte : 127.0.0.1
--- Généré le : mar. 23 mai 2023 à 11:25
--- Version du serveur : 10.4.27-MariaDB
--- Version de PHP : 8.2.0
+-- base de données : `db_quaiantique`
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données : `db_quaiantique`
---
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `admin`
---
 
 CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+    `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `username` VARCHAR(50) NOT NULL, 
+    `email` VARCHAR(100) NOT NULL,
+    `password` VARCHAR(60) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- --------------------------------------------------------
-
---
--- Structure de la table `doctrine_migration_versions`
---
-
-CREATE TABLE `doctrine_migration_versions` (
-  `version` varchar(191) NOT NULL,
-  `executed_at` datetime DEFAULT NULL,
-  `execution_time` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Déchargement des données de la table `doctrine_migration_versions`
---
-
-INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20230522114818', '2023-05-22 11:48:25', 25);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `reservations`
---
-
-CREATE TABLE `reservations` (
-  `id` int(11) NOT NULL,
-  `nbpers` int(11) DEFAULT NULL,
-  `jour` datetime DEFAULT NULL,
-  `heure_dej` time DEFAULT NULL,
-  `heure_diner` time DEFAULT NULL,
-  `allergies` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `user`
---
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `genre` varchar(255) NOT NULL,
-  `prenom` varchar(255) NOT NULL,
-  `nom` varchar(255) NOT NULL,
-  `defaut_nbpers` int(11) NOT NULL,
-  `allergies` varchar(255) DEFAULT NULL,
-  `email` varchar(180) NOT NULL,
-  `roles` longtext NOT NULL COMMENT '(DC2Type:json)',
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `genre` VARCHAR(10) NOT NULL,
+  `prenom` VARCHAR(30) NOT NULL,
+  `nom` VARCHAR(30) NOT NULL,
+  `email` VARCHAR(180) NOT NULL UNIQUE,
+  `password` VARCHAR(60) NULL,
+  `def_nbpers` INT(11) NULL,
+  `allergies` VARCHAR(255) DEFAULT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Déchargement des données de la table `user`
---
+-- Structure de la table `reservations`
 
-INSERT INTO `user` (`id`, `genre`, `prenom`, `nom`, `defaut_nbpers`, `allergies`, `email`, `roles`, `password`) VALUES
-(1, 'Mr', 'Marcel', 'Patoulachi', 1, 'Cornichon', 'MP@gmail.com', '[]', 'Marcel');
+CREATE TABLE `reservations` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `nom` VARCHAR(30) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `nbpers` INT(11) NOT NULL,
+  `jour` DATE NOT NULL,
+  `heure_dej` VARCHAR(5) DEFAULT NULL,
+  `heure_diner` VARCHAR(5) DEFAULT NULL,
+  `allergies` VARCHAR(255) DEFAULT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Index pour les tables déchargées
---
+CREATE TABLE `user_reservations` (
+   `id_user` INT,
+   `id_resa` INT,
+   PRIMARY KEY (`id_user`, `id_resa`),
+   FOREIGN KEY (`id_user`) REFERENCES `user`(id),
+   FOREIGN KEY (`id_resa`) REFERENCES `reservations`(id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Index pour la table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
+-- Structures des rôles
 
---
--- Index pour la table `doctrine_migration_versions`
---
-ALTER TABLE `doctrine_migration_versions`
-  ADD PRIMARY KEY (`version`);
+CREATE TABLE `roles` (
+    `id` INT PRIMARY KEY AUTO_INCREMENT,
+    `nom` VARCHAR(255) NOT NULL UNIQUE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Index pour la table `reservations`
---
-ALTER TABLE `reservations`
-  ADD PRIMARY KEY (`id`);
+CREATE TABLE admin_role (
+    `admin_id` INT,
+    `role_id` INT,
+    PRIMARY KEY (`admin_id`, `role_id`),
+    FOREIGN KEY (`admin_id`) REFERENCES `admin`(id),
+    FOREIGN KEY (`role_id`) REFERENCES `roles`(id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Index pour la table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`);
+CREATE TABLE user_role (
+    `user_id` INT,
+    `role_id` INT,
+    PRIMARY KEY (`user_id`, `role_id`),
+    FOREIGN KEY (`user_id`) REFERENCES `user`(id),
+    FOREIGN KEY (`role_id`) REFERENCES `roles`(id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- AUTO_INCREMENT pour les tables déchargées
---
+-- Tables pour adminFunc
 
---
--- AUTO_INCREMENT pour la table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+-- Table nombre de couverts
 
---
--- AUTO_INCREMENT pour la table `reservations`
---
-ALTER TABLE `reservations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+CREATE TABLE `couverts` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `jour` DATE NOT NULL,
+  `dej_din` VARCHAR(10) NOT NULL,
+  `couverts_restant` INT NOT NULL,
+  `couverts_total` INT NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- AUTO_INCREMENT pour la table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
+-- Table horaires
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE TABLE `horaires` (
+  `dej_ouverture` INT NOT NULL,
+  `dej_fermeture` INT NOT NULL,
+  `din_ouverture` INT NOT NULL,
+  `din_fermeture` INT NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Table Photos
+
+CREATE TABLE `photos` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `plat` VARCHAR(75) NOT NULL,
+  `chemin` VARCHAR(250) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- INSERT et autres instructions
+
+INSERT INTO `roles` (`nom`) VALUES ('user_role');
+INSERT INTO `roles` (`nom`) VALUES ('admin_role');
+INSERT INTO `admin` (`username`, `email`, `password`) VALUES ('Admin', 'admin@mail.com', MD5('administeur'));
+INSERT INTO `admin_role` (`admin_id`, `role_id`) VALUES (LAST_INSERT_ID(), 2);
+
+INSERT INTO `couverts` (`couverts_total`) VALUES ('20');
+
+INSERT INTO `photos` (`plat`, `chemin`) VALUES ('Tartiflette au Reblochon', '/public/Images/tartiflette_carré.jpg');
+INSERT INTO `photos` (`plat`, `chemin`) VALUES ('Soupe parmentier', '/public/Images/soupe_parmentier_carré.jpg');
+INSERT INTO `photos` (`plat`, `chemin`) VALUES ('Risotto crémeux aux légumes du marché', '/public/Images/risotto_carré.jpg'); 
+INSERT INTO `photos` (`plat`, `chemin`) VALUES ('Fondu savoyarde', '/public/Images/fondue_6.jpg');
+INSERT INTO `photos` (`plat`, `chemin`) VALUES ('Raclette traditionnelle', '/public/Images/raclette_carré.jpg');
+INSERT INTO `photos` (`plat`, `chemin`) VALUES ('Croustillant au Reblochon du Val d’Arly', '/public/Images/croustillant_au_reblochon.jpg');

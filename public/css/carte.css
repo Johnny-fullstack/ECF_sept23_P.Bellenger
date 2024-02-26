@@ -23,7 +23,7 @@
     left: 17px;
 }
 
-h3:not(.titles_footer > h3) {
+h3:not(.title_footer > h3) {
     font-family: 'Playfair Display SC', sans-serif;
     font-weight: 300;
     text-shadow: 2px 2px 2px black;

@@ -1,19 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Playfair+Display+SC&display=swap');
-
-body {
-    margin: 0px;
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 main {
-    background-image: url('../Images/gastronomie-savoyarde 1.jpg');
+    background-image: url('../images/gastronomie-savoyarde 1.jpg');
     background-repeat: no-repeat;
-    height: 100%;
     background-position: center;
     background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 30px;
 }
 
 /* Polices d'écritures */
@@ -31,7 +32,7 @@ h2 {
     font-size: 18px;
 }
 
-p, a, h3, h4, label {
+p, a, h3, h4, li, label {
     font-family: 'Montserrat', 'Times New Roman', Times, serif, sans-serif;
     color: white;
 }
@@ -41,9 +42,8 @@ p, a, h3, h4, label {
     /* background */
 
 header {
-    background-image: url('../Images/7550.jpg');
+    background-image: url('../images/7550.jpg');
     background-repeat: no-repeat;
-    height: 100%;
     background-position: center;
     background-size: cover;
     box-shadow: 0px 0px 30px 0px black;
@@ -174,36 +174,50 @@ nav > a:not(:hover) {
 /* FOOTER */
 
 footer {
-    background-image: url('../Images/7550.jpg');
+    background-image: url('../images/7550.jpg');
     background-repeat: no-repeat;
-    height: 100%;
     background-position: center;
     background-size: cover;
+    display: flex;
+    flex-direction: column;
 }
 
-.titles_footer {
+.footer {
+    width: 100%;
+}
+
+.title_footer {
     background-color: rgba(144, 100, 39, 0.9);
-    box-shadow: 0px 20px 30px 0px black;
+    box-shadow: 20px 20px 30px 0px black;
     display: flex;
     justify-content: space-evenly;
-    align-items: baseline;
-}
-
-.titles_footer :first-child {
-    position: relative;
-    left: -30px;
 }
 
 .para_footer {
+    height : 125px; 
     background-color: rgba(57, 44, 30, 0.7);
     display: flex;
     justify-content: space-evenly;
-    padding-bottom: 20px;
+    padding-top: 10px;
 }
 
-.para_footer :first-child {
-    position: relative;
-    top: 20px;
+ul {
+    margin: 0;
+    padding: 0;
+    margin-top: 16px;
+    list-style: none;
+}
+
+li {
+    color: white;
+}
+
+li > a {
+    font-weight: initial;
+}
+
+.pad {
+    padding-bottom: 40px;
 }
 
 @media screen and (min-width: 440px) {
@@ -269,4 +283,8 @@ footer {
     }
 
     /* FOOTER */
+
+    footer {
+        flex-direction: row;
+    }
 }

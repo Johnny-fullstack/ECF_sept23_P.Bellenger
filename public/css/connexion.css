@@ -1,19 +1,14 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-image: url('../Images/gastronomie-savoyarde 1.jpg');
-    background-repeat: no-repeat;
-    height: 100%;
-    background-position: center;
-    background-size: cover;
+
+
+.main_co {
+    min-height: 100vh
 }
-main {
+
+.defaut_nbpers {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-   
+    justify-content: center;   
 }           
 
 h2 {
@@ -27,15 +22,7 @@ form {
     background-size: cover;
     margin: 40px;
     border: solid 4px rgba(57, 44, 30, 0.9);
-    padding: 30px 30px;
-    margin: 30px;
-}
-
-#register, #login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 20px 30px 30px;
 }
 
 /* css général des champs */
@@ -46,27 +33,19 @@ form > div {
     background-color: rgba(57, 44, 30, 0.9);
     padding: 15px;
 }
-form > div > div {
-  margin: 10px;
-  width: 100%;
-}
 
 .radio:hover {
     box-shadow: inset 2px 2px 0px 0px rgba(0, 0, 0, 0.7);
 }
 
-input[type="radio"] {
-    display: none;
-}
-
-input[type="radio"] + label {
+.radio {
     color: black;
     font-weight: 600;
     background-color: antiquewhite;
     padding: 5px;
     border: solid 2px;
     border-radius: 10px;
-    width: 130px;
+    width: 135px;
     box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.7);
 }
 
@@ -75,15 +54,15 @@ label {
     text-align: center;
 }
 
-input[type="radio"]:checked + label {
-    box-shadow: inset 2px 2px 0px 0px rgba(0, 0, 0, 0.7);
+div > div > label {
+    color: black;
+    font-weight: 600;
 }
 
 textarea, input {
     background-color: antiquewhite;
     border: solid 2px;
     border-radius: 5px;
-    width: 100%;
 }
 
 /* css spécifiques à un champ */
@@ -97,7 +76,7 @@ textarea, input {
     margin-top: 7px;
 }
 
-.defaut_nbpers {
+.genre > div , .defaut_nbpers > div {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
@@ -106,15 +85,6 @@ textarea, input {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-/* css pour le script */
-
-.form-container {
-    display: none;
-}
-.form-container.active {
-    display: block;
 }
 
 /* validation button */
@@ -140,11 +110,14 @@ button:active {
 }
 .login_button {
     text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 .login_button > a {
     font-size: 14px;
     font-weight: 400;
-    
+    padding-top: 15px;
 }
 
 .login_button > a:hover {

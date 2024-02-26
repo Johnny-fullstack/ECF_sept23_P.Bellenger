@@ -13,62 +13,28 @@ form {
     padding: 30px 30px;
 }
 
-/* css général des champs */
+h2 {
+    padding: 0px 0px 15px;
+}
 
-form > div {
+.nom, .email, .nbpers, .date, .horaire, .allergies {
     width: 300px;
     padding-bottom: 20px;
     background-color: rgba(57, 44, 30, 0.9);
-    padding: 15px;
+    padding: 30px;
+}
+
+.nom {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
-form > div > div {
-  margin: 10px;
+
+.nom > input {
+height: 15px;
 }
 
-.radio:hover {
-    box-shadow: inset 2px 2px 0px 0px rgba(0, 0, 0, 0.7);
-}
-
-input[type="radio"] {
-    display: none;
-}
-
-input[type="radio"] + label {
-    color: black;
-    font-weight: 600;
-    background-color: antiquewhite;
-    padding: 5px;
-    border: solid 2px;
-    border-radius: 10px;
-    width: 130px;
-    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.7);
-}
-
-label {
-    margin: 5px;
-    text-align: center;
-}
-
-input[type="radio"]:checked + label {
-    box-shadow: inset 2px 2px 0px 0px rgba(0, 0, 0, 0.7);
-    background-color: bisque;
-}
-
-textarea, input {
-    background-color: antiquewhite;
-    border: solid 2px;
-    border-radius: 5px;
-}
-
-/* css spécifiques à un champ */
-
-.nbpers, .heures {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.nbpers {
+    border-radius: 5px 5px 0px 0px;
 }
 
 /* date zone */
@@ -82,17 +48,62 @@ input[type="date"] {
     box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.7);
 }
 
+#places_restantes {
+    color: white;
+    font-size: 20px;
+}
+
 /* allergie zone */
 
-.allergie {
+.allergies {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    border-radius: 0px 0px 5px 5px;
+}
+
+textarea {
+    background-color: antiquewhite;
+    margin-top: 10px;
+    border: solid 2px;
+    border-radius: 5px;
+}
+
+/* radio button */
+
+.radio {
+    background-color: antiquewhite;
+    padding: 5px;
+    margin: 5px;
+    border: solid 2px;
+    border-radius: 10px;
+    width: 120px;
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.7);
+    display: inline-block;
+}
+.radio:hover {
+    box-shadow: inset 2px 2px 0px 0px rgba(0, 0, 0, 0.7);
+}
+
+input[type="radio"] + label {
+    color: black;
+    font-weight: 600;
+}
+
+#heures {
+    border: solid 1px antiquewhite;
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.7);
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-height: auto;
 }
 
 /* validation button */
 
 button {
+    margin-top: 30px;
     background-color: rgb(57, 44, 30);
     color: antiquewhite;
     padding: 5px;

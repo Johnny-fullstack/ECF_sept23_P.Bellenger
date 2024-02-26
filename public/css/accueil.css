@@ -14,26 +14,6 @@
     margin: 12px;
 } 
 
-.img1 {
-
-    background-image: url(../Images/tartiflette_carré.jpg);
-}
-.img2 {
-    background-image: url(../Images/soupe_parmentier_carré.jpg);
-}
-.img3 {
-    background-image: url(../Images/risotto_carré.jpg);
-}
-.img4 {
-    background-image: url(../Images/fondue_6.jpg);
-}
-.img5 {
-    background-image: url(../Images/raclette_carré.jpg);
-}
-.img6 {
-    background-image: url(../Images/croustillant_au_reblochon.jpg);
-}
-
 span {
     position: absolute;
     height: 320px;
