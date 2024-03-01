@@ -6,6 +6,7 @@ POUR LANCER LE SITE EN LOCAL:
 - Dans la barre d'url taper "symfony.localhost"
 
 
-POUR CREER UN PROFIL ADMINISTRATEUR:
+POUR SE CONECTER AU PROFIL ADMINISTRATEUR:
 
-...
+mail : admin@mail.com
+password : administeur
