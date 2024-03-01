@@ -81,10 +81,10 @@ CREATE TABLE `couverts` (
 -- Table horaires
 
 CREATE TABLE `horaires` (
-  `dej_ouverture` INT NOT NULL,
-  `dej_fermeture` INT NOT NULL,
-  `din_ouverture` INT NOT NULL,
-  `din_fermeture` INT NOT NULL
+  `dej_ouverture` VARCHAR(5) NOT NULL,
+  `dej_fermeture` VARCHAR(5) NOT NULL,
+  `din_ouverture` VARCHAR(5) NOT NULL,
+  `din_fermeture` VARCHAR(5) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Table Photos
@@ -110,3 +110,5 @@ INSERT INTO `photos` (`plat`, `chemin`) VALUES ('Risotto crémeux aux légumes d
 INSERT INTO `photos` (`plat`, `chemin`) VALUES ('Fondu savoyarde', '/public/Images/fondue_6.jpg');
 INSERT INTO `photos` (`plat`, `chemin`) VALUES ('Raclette traditionnelle', '/public/Images/raclette_carré.jpg');
 INSERT INTO `photos` (`plat`, `chemin`) VALUES ('Croustillant au Reblochon du Val d’Arly', '/public/Images/croustillant_au_reblochon.jpg');
+
+INSERT INTO `horaires` (`dej_ouverture`, `dej_fermeture`, `din_ouverture`, `din_fermeture`) VALUES ('11h30', '14h30', '19h30', '22h30');

@@ -33,6 +33,20 @@ function affichagePhoto($photoStatement) {
     }
 }
 
+//récupération des infos horaires actuel
+$horaireStatement = $pdo->prepare('SELECT * FROM `horaires`');
+$horaireStatement->execute();
+
+if($horaireStatement->rowCount() == 1) {
+    $tableHoraires = $horaireStatement->fetch(PDO::FETCH_ASSOC);
+    $dejOuv = $tableHoraires['dej_ouverture'];
+    $dejFerm = $tableHoraires['dej_fermeture'];
+    $dinOuv = $tableHoraires['din_ouverture'];
+    $dinFerm = $tableHoraires['din_fermeture'];
+} else {
+    echo "Erreur dans la récupération des horaires";
+}
+
 
 
 

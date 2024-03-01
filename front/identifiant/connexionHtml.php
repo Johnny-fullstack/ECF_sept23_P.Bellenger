@@ -1,5 +1,6 @@
 <?php
 include "../../src/liens_nav.php";
+include "../../src/adminFunc/dataRecup.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -34,16 +35,28 @@ include "../../src/liens_nav.php";
 
                         <div class="login_button">
                             <button type="submit">Connexion</button>
-                            <a href="<?php echo $lienInscription?>">Je ne suis pas inscris<a>
+                            <a href="<?php echo $lienInscription?>">Je ne suis pas inscris</a>
                         </div>                   
                        
+                        <p class="message">
+                        <?php
+                        // Vérification de l'existence du message dans la session
+                        if (isset($_SESSION['message_error'])) {
+                            // Stocker le message dans une variable temporaire
+                            $messageCouvert = $_SESSION['message_error'];                                    
+                            // Afficher le message
+                            echo $messageCouvert;
+                            // Supprimer le message
+                            unset($_SESSION['message_error']);
+                        }
+                        ?>
+                    </p> 
                 </form>
-
 
         </main>
 
         <footer>
-            <div class="footer right">                
+        <div class="footer right">                
                 <div class="title_footer">
                     <h3>Contact</h3>
                 </div>
@@ -64,8 +77,8 @@ include "../../src/liens_nav.php";
                 <div class="para_footer">
                     <p>
                         Ouvert du mardi au samedi <br/>
-                        Au déjeuner : 11h30 à 14h30 <br/>
-                        Au dîner : 19h30 à 22h30
+                        Au déjeuner : <?php echo "$dejOuv à $dejFerm"?><br/>
+                        Au dîner : <?php echo "$dinOuv à $dinFerm"?>
                     </p>
                 </div>
             </div>
@@ -82,7 +95,7 @@ include "../../src/liens_nav.php";
                         <li><a href="<?php echo $lienCookie;?>">Politique d'utilisation des cookies</a></li>
                     </ul>
                 </div>
-            </div>              
+            </div>                           
         </footer>
         
     </body>

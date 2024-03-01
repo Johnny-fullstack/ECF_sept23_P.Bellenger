@@ -1,6 +1,7 @@
 <?php
 include "../../src/liens_nav.php";
 include "../../src/verifCo.php";
+include "../../src/adminFunc/dataRecup.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -52,9 +53,13 @@ include "../../src/verifCo.php";
             </header>
 
             <main>
+                <h2>Politique de confidentialité</h2>
 
-
-
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec ultricies lacus, eget vestibulum urna. Nullam sed posuere ipsum. Duis ut sapien sit amet est sollicitudin viverra. Quisque vestibulum neque nec felis placerat, sed commodo ex lacinia. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin vel lorem ut mauris efficitur sollicitudin. Mauris vitae eros eget nunc consectetur varius sed nec lacus. Nulla facilisi. Vestibulum consectetur ligula at feugiat.</p>
+                <p>Sed auctor, libero nec tincidunt tincidunt, nunc nunc tincidunt libero, nec tincidunt libero nunc nec libero.</p>
+                <p>Suspendisse vehicula, velit a volutpat pharetra, lorem magna fringilla risus, sed cursus urna mi sit amet lorem. Cras ultricies vel risus eu fermentum. Vestibulum sodales nunc eget dolor sodales lacinia. Sed vel urna sed ex ullamcorper tristique. Integer rutrum a libero et euismod. Curabitur at fermentum justo. Aenean sit amet dui sem. Nulla facilisi. Vivamus lacinia, nulla et dignissim consequat, nibh turpis dictum arcu, id efficitur ligula nisl eu dolor. Nulla vel aliquet elit.</p>
+                <p>dolor. Nulla facilisi. Vivamus lacinia, nulla et dignissim consequat, nibh turpis dictum arcu, id efficitur ligula nisl eu dolor. Nulla vel aliquet elit.</p>
+                <p>Morbi pharetra nibh id turpis efficitur, vel ultrices libero scelerisque. Integer consequat mi ac est fermentum varius. Fusce sit amet augue nec odio tincidunt auctor. Donec sit amet felis nec mi bibendum pharetra. Nam fermentum est vitae nunc varius, id malesuada purus cursus. Nullam congue eros sit amet luctus rutrum. Aliquam vitae velit id velit eleifend consequat. Curabitur in justo felis.</p>
             </main>
             
             <footer>
@@ -79,8 +84,8 @@ include "../../src/verifCo.php";
                 <div class="para_footer">
                     <p>
                         Ouvert du mardi au samedi <br/>
-                        Au déjeuner : 11h30 à 14h30 <br/>
-                        Au dîner : 19h30 à 22h30
+                        Au déjeuner : <?php echo "$dejOuv à $dejFerm"?><br/>
+                        Au dîner : <?php echo "$dinOuv à $dinFerm"?>
                     </p>
                 </div>
             </div>

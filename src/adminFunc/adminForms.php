@@ -8,7 +8,7 @@ $pdo = new PDO('mysql:host=localhost;dbname=db_quaiantique', 'root', '');
 
 //traitement du formulaire admin changeant le nombre de couvert maximum
 if  (isset($_POST['couv_max'])) {
-    $nouvCouvertsTotal = $_POST['couv_max'];
+    $nouvCouvertsTotal = htmlspecialchars($_POST['couv_max']);
 
     $nouvCouvMaxInsert = $pdo->prepare('UPDATE `couverts` SET `couverts_total` = ? WHERE `id` = 1');
     $nouvCouvMaxInsert->execute([$nouvCouvertsTotal]);
@@ -17,6 +17,11 @@ if  (isset($_POST['couv_max'])) {
     $_SESSION['message_couvert'] = 'La mise à jour des couverts maximum a été effectuée avec succès.';
     session_write_close();
     header('Location: ../../front/utilisateurs/pageAdminHtml.php');   
+} else {
+    //erreur de téléchargment du fichier
+    $_SESSION['message_couvert'] = "La mise à jour des couverts maximum a échoué.";
+    session_write_close();
+    header('Location: ../../front/utilisateurs/pageAdminHtml.php');
 }
 
 //traitement du formulaire admin changeant les photos
@@ -26,17 +31,17 @@ if (isset($_FILES['photo'])) {
     $fileTmpName = $file['tmp_name'];
     $fileError = $file['error'];
 
-    $titrePhoto = $_POST['plat'];
-    $idPhotoRemplace = $_POST['id_photo'];
+    $titrePhoto = htmlspecialchars($_POST['plat']);
+    $idPhotoRemplace = htmlspecialchars($_POST['id_photo']);
     
-    // Vérifier s'il n'y a pas d'erreur lors du téléchargement
+    // Vérifie s'il n'y a pas d'erreur lors du téléchargement
     if ($fileError === 0) {
-        // Déplacer le fichier téléchargé vers le dossier de destination
-        $chemin = "/public/Images/$fileName";
+        // Déplace le fichier téléchargé vers le dossier de destination
+        $chemin = "../../public/Images/$fileName";
     
-        // Vérifier si le déplacement du fichier s'est bien passé
+        // Vérifie si le déplacement du fichier s'est bien passé
         if (move_uploaded_file($fileTmpName, $chemin)) {
-            // Maintenant vous pouvez enregistrer le chemin du fichier dans votre base de données
+            // enregistrement des données en base de données
             $nouvCouvMaxInsert = $pdo->prepare('UPDATE `photos` SET `plat` = ?, `chemin` = ? WHERE `id` = ?');
             $nouvCouvMaxInsert->execute([$titrePhoto, $chemin, $idPhotoRemplace]);
     
@@ -44,18 +49,41 @@ if (isset($_FILES['photo'])) {
             session_write_close();
             header('Location: ../../front/utilisateurs/pageAdminHtml.php');
         } else {
-            // Gérer les erreurs de déplacement du fichier
-            echo "Une erreur s'est produite lors du déplacement du fichier.";
+            //erreur de déplacement du fichier
+            $_SESSION['message_photo'] = "Le remplacement de votre image a échoué.";
+            session_write_close();
+            header('Location: ../../front/utilisateurs/pageAdminHtml.php');
         }
     } else {
-        // Gérer les erreurs de téléchargement
-        echo "Une erreur s'est produite lors du téléchargement du fichier.";
-        echo $fileError;
+        //erreur de téléchargment du fichier
+        $_SESSION['message_photo'] = "Le téléchargement de votre image a échoué.";
+        session_write_close();
+        header('Location: ../../front/utilisateurs/pageAdminHtml.php');
     }
     
+} else {
+    //erreur de téléchargment du fichier
+    $_SESSION['message_photo'] = "Le téléchargement de votre image a échoué.";
+    session_write_close();
+    header('Location: ../../front/utilisateurs/pageAdminHtml.php');
 }
 
 //traitement du formulaire admin changeant les horaires
-if  (isset($_POST[''])) {
+if  (isset($_POST['dej_ouverture'], $_POST['dej_fermeture'], $_POST['din_ouverture'], $_POST['din_fermeture'])) {
+    $dejOuv = htmlspecialchars($_POST['dej_ouverture']);
+    $dejFerm = htmlspecialchars($_POST['dej_fermeture']);
+    $dinOuv = htmlspecialchars($_POST['din_ouverture']);
+    $dinFerm = htmlspecialchars($_POST['din_fermeture']);
 
-    }
+    $nouvHorairesInsert = $pdo->prepare('UPDATE `horaires` SET `dej_ouverture` = ?, `dej_fermeture` = ?, `din_ouverture` = ?, `din_fermeture` = ?');
+    $nouvHorairesInsert->execute([$dejOuv, $dejFerm, $dinOuv, $dinFerm]);
+
+    $_SESSION['message_horaires'] = 'La mise à jour des horaires a été effectuée avec succès.';
+    session_write_close();
+    header('Location: ../../front/utilisateurs/pageAdminHtml.php');
+} else {
+    //erreur de téléchargment du fichier
+    $_SESSION['message_horaires'] = "La mise à jour des horaires a échoué.";
+    session_write_close();
+    header('Location: ../../front/utilisateurs/pageAdminHtml.php');
+}

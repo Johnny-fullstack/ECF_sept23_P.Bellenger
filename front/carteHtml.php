@@ -1,6 +1,7 @@
 <?php
 include "../src/liens_nav.php";
 include "../src/verifCo.php";
+include "../src/adminFunc/dataRecup.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -311,8 +312,8 @@ include "../src/verifCo.php";
                 <div class="para_footer">
                     <p>
                         Ouvert du mardi au samedi <br/>
-                        Au déjeuner : 11h30 à 14h30 <br/>
-                        Au dîner : 19h30 à 22h30
+                        Au déjeuner : <?php echo "$dejOuv à $dejFerm"?><br/>
+                        Au dîner : <?php echo "$dinOuv à $dinFerm"?>
                     </p>
                 </div>
             </div>

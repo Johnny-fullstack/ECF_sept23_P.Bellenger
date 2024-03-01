@@ -3,6 +3,7 @@ include "../../src/liens_nav.php";
 include "../../src/verifCo.php";
 include "../../src/entities/User.php";
 include "../../src/formulaires/NbPersTransformer.php";
+include "../../src/adminFunc/dataRecup.php";
 
 if (session_status() == PHP_SESSION_NONE) {
     // Si la session n'est pas déjà démarrée, on la démarre
@@ -147,7 +148,19 @@ if(isset($_SESSION['user'])) {
                     <button type="submit">Réserver</button>
                 </div>
 
-                
+                <p class="message">
+                        <?php
+                        // Vérification de l'existence du message dans la session
+                        if (isset($_SESSION['message_error'])) {
+                            // Stocker le message dans une variable temporaire
+                            $messageCouvert = $_SESSION['message_error'];                                    
+                            // Afficher le message
+                            echo $messageCouvert;
+                            // Supprimer le message
+                            unset($_SESSION['message_error']);
+                        }
+                        ?>
+                    </p> 
             </form>
 
         </main>
@@ -174,8 +187,8 @@ if(isset($_SESSION['user'])) {
                 <div class="para_footer">
                     <p>
                         Ouvert du mardi au samedi <br/>
-                        Au déjeuner : 11h30 à 14h30 <br/>
-                        Au dîner : 19h30 à 22h30
+                        Au déjeuner : <?php echo "$dejOuv à $dejFerm"?><br/>
+                        Au dîner : <?php echo "$dinOuv à $dinFerm"?>
                     </p>
                 </div>
             </div>

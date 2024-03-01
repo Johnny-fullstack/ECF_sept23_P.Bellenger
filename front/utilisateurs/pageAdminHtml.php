@@ -132,16 +132,16 @@ if(!isset($_SESSION['admin'])) {
                         
                         <form action="../../src/adminFunc/adminForms.php" method="post">
                             <label for="dej_ouverture">ouverture dejeuner:</label>
-                            <input type="text" id="dej_ouverture" name="dej_ouverture" required>
+                            <input type="text" id="dej_ouverture" name="dej_ouverture" placeholder="00h00" required>
 
                             <label for="dej_fermeture">fermeture dejeuner:</label>
-                            <input type="text" id="dej_fermeture" name="dej_fermeture" required> 
+                            <input type="text" id="dej_fermeture" name="dej_fermeture" placeholder="00h00" required> 
 
                             <label for="dej_ouverture">ouverture diner:</label>
-                            <input type="text" id="din_ouverture" name="din_ouverture" required>
+                            <input type="text" id="din_ouverture" name="din_ouverture" placeholder="00h00" required>
 
                             <label for="dej_fermeture">fermeture diner:</label>
-                            <input type="text" id="din_fermeture" name="din_fermeture" required>
+                            <input type="text" id="din_fermeture" name="din_fermeture" placeholder="00h00" required>
                             <button type="submit">Modifier</button>
                         </form>
                     </div>
@@ -192,8 +192,8 @@ if(!isset($_SESSION['admin'])) {
                 <div class="para_footer">
                     <p>
                         Ouvert du mardi au samedi <br/>
-                        Au déjeuner : 11h30 à 14h30 <br/>
-                        Au dîner : 19h30 à 22h30
+                        Au déjeuner : <?php echo "$dejOuv à $dejFerm"?><br/>
+                        Au dîner : <?php echo "$dinOuv à $dinFerm"?>
                     </p>
                 </div>
             </div>
@@ -212,5 +212,6 @@ if(!isset($_SESSION['admin'])) {
                 </div>
             </div>              
         </footer>
+        
     </body>
 </html>
