@@ -1,5 +1,6 @@
 <?php
-include "adminFunc/modifNbCouverts.php";
+include "pdo.php";
+include "adminFunc/dataRecup.php";
 
 // Récupération du corps de la requête
 $body = file_get_contents('php://input');
@@ -8,13 +9,11 @@ $data = json_decode($body, true); // Le deuxième argument true retourne un tabl
 
 // Récupéreration des données
 $dateFormate = $data['param1'];
-// Convertion de la date au format MySQL (YYYY-MM-DD)
-$date = date('Y-m-d', strtotime(str_replace('/', '-', $dateFormate)));
+$date = date('Y-m-d', strtotime(str_replace('/', '-', $dateFormate))); // Convertion de la date au format MySQL (YYYY-MM-DD)
 $periode = $data['param2'];
 $nbCouverts = $data['param3'];
 
-// Connexion et récupération à la base de données 
-$pdo = new PDO('mysql:host=localhost;dbname=db_quaiantique', 'root', '');
+// récupération dans la base de données 
 $couvertStatement = $pdo->prepare('SELECT * FROM `couverts` WHERE `jour` = :jour AND `dej_din` = :dej_din');
 $couvertStatement->bindValue(':jour', $date);
 $couvertStatement->bindValue(':dej_din', $periode);

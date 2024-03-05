@@ -63,7 +63,7 @@ async function couvertsRestant(date, periode, nbCouverts) {
             },
             body: JSON.stringify({ param1: date, param2: periode, param3: nbCouverts })
           };
-        
+
         //envoi de la requête async à l'url indiqué avec valeurs
         const response = await fetch('../../src/couvertAsync.php', valeurs);
 

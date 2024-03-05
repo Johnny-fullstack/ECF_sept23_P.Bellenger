@@ -1,12 +1,13 @@
 <?php
+include '../pdo.php';
 include '../entities/User.php';
 include '../entities/Reservation.php';
 include 'NbPersTransformer.php';
 
-// Connexion à la base de données
-$pdo = new PDO('mysql:host=localhost;dbname=db_quaiantique', 'root', '');
-
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    // Si la session n'est pas déjà démarrée, on la démarre
+    session_start();
+}
 
 // Récupération des données du formulaire
 $nom = htmlspecialchars($_POST['nom']);
@@ -31,12 +32,16 @@ $allergies = htmlspecialchars($_POST['allergies']);
 // Si  allergies est vide, on lui attribue 0
 $allergies = $allergies == NULL ? "0" : $allergies;
 // Transformation de la valeur de nbPers en entier
-$intNbPers =  NbPersTransformer::reverseTransform($nbPers);
+$intNbPers = NbPersTransformer::reverseTransform($nbPers);
+
+echo $intNbPers, $date, $periode, $heureDej, $heureDin, $allergies;
 
 // Insertion des données en la table reservations
 $insertResa = 'INSERT INTO `reservations` (`nom`, `email`, `nbpers`, `jour`, `heure_dej`, `heure_diner`, `allergies`) VALUES (?, ?, ?, ?, ?, ?, ?)';
 $resaStatement = $pdo->prepare($insertResa);
 $resaStatement->execute([$nom, $mail, $intNbPers, $date, $heureDej, $heureDin, $allergies]);
+// Récupère l'id de la dernière reservation enregistré
+$lastId = $pdo->lastInsertId();
 
     //Recherche du nombre de places restantes
     $couvertStatement = $pdo->prepare('SELECT * FROM `couverts` WHERE `jour` = :jour AND `dej_din` = :dej_din');
@@ -67,13 +72,13 @@ $resaStatement->execute([$nom, $mail, $intNbPers, $date, $heureDej, $heureDin, $
         $insertCouvertStatement->execute([$date, $periode, $couvertRestant - $intNbPers]);
     } else {
         // Si la requête a échoué
-        header('Location: ../../front/reservation/erreurInsertHtml.php');
+        $_SESSION['message_error'] = "Quelque chose à échoué.";
+        session_write_close();
+        header('Location: ../../front/reservation/resaHtml.php');
         exit;
     }
 
 if ($resaStatement->rowCount() == 1) {
-    // Récupère l'id de la dernière reservation enregistré
-    $lastId = $pdo->lastInsertId();
 
     // Vérifie que l'objet User est défini dans la session
     if (isset($_SESSION['user'])) {
@@ -105,6 +110,8 @@ if ($resaStatement->rowCount() == 1) {
     exit;
 } else {
     // La requête a échoué
+    $_SESSION['message_error'] = "L'enregistrement de votre réservation a échoué.";
+    session_write_close();
     header('Location: ../../front/reservation/erreurInsertHtml.php');
     exit;
 }

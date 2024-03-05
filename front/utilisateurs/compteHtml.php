@@ -1,4 +1,5 @@
 <?php
+include "../../src/pdo.php";
 include "../../src/liens_nav.php";
 include "../../src/verifCo.php";
 include "../../src/entities/User.php";
@@ -28,7 +29,6 @@ if(isset($_SESSION['user'])) {
     $userReservations = array();
 
     // Récupération id des réservations associées à l'utilisateur
-    $pdo = new PDO('mysql:host=localhost;dbname=db_quaiantique', 'root', '');
     $resaIdUser = $pdo->prepare('SELECT `id_resa` FROM `user_reservations` WHERE `id_user` = :id');
     $resaIdUser->bindvalue(':id', $userId); 
     $resaIdUser->execute();
@@ -59,7 +59,8 @@ if(isset($_SESSION['user'])) {
 <html lang="fr">
     <head>
         <meta charset="utf-8"/>
-        <title></title>
+        <title>Page utilisateur - Quai Antique</title>
+        <meta name="description" content="Page de compte des utilisateurs."/>
         <link rel="stylesheet" type="text/css" href="../../public/css/header&footer.css">
         <link rel="stylesheet" type="text/css" href="../../public/css/profil.css">
     </head>
@@ -99,7 +100,7 @@ if(isset($_SESSION['user'])) {
             </nav>    
         </header>
 
-        <main>
+        <main class="main">
 
         <div class="espace_user">
                 <div class="espace_info">
@@ -119,6 +120,8 @@ if(isset($_SESSION['user'])) {
                     </ul>
                 </div>
 
+                <div class="separation"></div>
+
                 <div class="espace_reservation">
                     <h3>Mes réservations</h3>
 
@@ -126,43 +129,44 @@ if(isset($_SESSION['user'])) {
                     if($userReservations == NULL) {
                         echo "<p>Aucune réservation n'a été enregistrée</p>"; 
                     } else {
-                            foreach ($userReservations as $resaData) {
-                                if ($resaData['heure_diner'] == NULL) {
-                                    $heures = $resaData['heure_dej']; 
-                                } else {
-                                    $heures = $resaData['heure_diner']; 
-                                }
-
-                                echo "<tr>";
-                                echo "<th>Nom</th>";
-                                echo "<th>email</th>";
-                                echo "<th>Nombres de couverts</th>";
-                                echo "<th>jour</th>";
-                                echo "<th>heure</th>";
-                                echo "<th>Allergies</th>";
-                                echo "</tr>";
-                                echo "<tr>";
-                                echo "<td>{$resaData['nom']}</td>";
-                                echo "<td>{$resaData['email']}</td>";
-                                echo "<td>{$resaData['nbpers']}</td>";
-                                echo "<td>{$resaData['jour']}</td>";
-                                echo "<td>{$heures}</td>";
-                                echo "<td>{$resaData['allergies']}</td>";
-                                echo "<td>";
-                                echo "<form method='POST' action='../php/admin_func/productDel.php'>"; 
-                                echo "<input type='hidden' name='produit_id' value='{$resaData['id']}'>";
-                                echo "<button type='submit'>Supprimer</button>";
-                                echo "</form>";
-                                echo "</td>";
-                                echo "</tr>";
-                            }                          
-                        }
+                        echo "<table>";
+                        echo "<tr>";
+                        echo "<th>Nom</th>";
+                        echo "<th>Pers.</th>";
+                        echo "<th>Jour</th>";
+                        echo "<th>Heure</th>";
+                        echo "<th>Allergies</th>";
+                        echo "</tr>";
+                        foreach ($userReservations as $resaData) {
+                            if ($resaData['heure_diner'] == NULL) {
+                                $heures = $resaData['heure_dej']; 
+                            } else {
+                                $heures = $resaData['heure_diner']; 
+                            }
+                            echo "<tr>";
+                            echo "<td>{$resaData['nom']}</td>";
+                            echo "<td>{$resaData['nbpers']}</td>";
+                            echo "<td>{$resaData['jour']}</td>";
+                            echo "<td>{$heures}</td>";
+                            echo "<td>{$resaData['allergies']}</td>";
+                            echo "<td>";
+                            echo "<form method='POST' action='../../src/formulaires/resaDel.php'>"; 
+                            echo "<input type='hidden' name='resa_id' value='{$resaData['id']}'>";
+                            echo "<button type='submit'>Supprimer</button>";
+                            echo "</form>";
+                            echo "</td>";
+                            echo "</tr>";
+                        }     
+                        echo "</table>";                  
+                    }
                     ?>
                 </div>
 
+                <div class="separation"></div>
+
                 <div class="espace_de">
                     <form action="../../src/formulaires/deconnexion.php" method="post">
-                        <button type="submit">Déconnexion</button>
+                        <button class="lil_but" type="submit">Déconnexion</button>
                     </form>
                 </div>
             </div>

@@ -1,11 +1,15 @@
 <?php
+include "../../src/pdo.php";
 include "../../src/liens_nav.php";
 include "../../src/verifCo.php";
 include "../../src/entities/Reservation.php";
 include "../../src/entities/User.php";
 include "../../src/adminFunc/dataRecup.php";
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    // Si la session n'est pas déjà démarrée, on la démarre
+    session_start();
+}
 
 // Récupérer la réservation depuis la session
 if (isset($_SESSION['resa'])) {
@@ -30,10 +34,10 @@ if (isset($_SESSION['resa'])) {
     $nom= $resa->getNom();
     $mail= $resa->getMail();
     $jour= $resa->getJour();
-    $heurDej = $resa->getHeureDej();
+    $heureDej = $resa->getHeureDej();
     $heureDin = $resa->getHeureDin();
 
-    if ($heurDej !== NULL && $heureDin == 0) {
+    if ($heureDej !== NULL && $heureDin == 0) {
         $heure = $heurDej;
     } elseif ($heureDin !== NULL && $heureDej == 0) {
         $heure = $heureDin;
@@ -50,13 +54,13 @@ session_write_close();
     <head>
 
         <meta charset="utf-8"/>
-        <title>Quai Antique-Valide</title>
+        <title>Réservation validée</title>
+        <meta name="description" content="Page de confirmation de réservation."/>
         <link rel="stylesheet" type="text/css" href="../../public/css/header&footer.css">
-        <link rel="stylesheet" type="text/css" href="../../public/css/accueil.css">
 
     </head>
 
-    <body>
+    <body class="body">
         
             <header>
 
@@ -96,7 +100,7 @@ session_write_close();
 
             <main>
 
-                <div class="sms_valid">
+                <div class="blackdiv">
                     <?php echo $smsValidation; ?>
                 </div>
 

@@ -1,12 +1,20 @@
+.main {
+    padding: 0px;
+}
 .espace_user, .espace_admin {
-    padding: 20px;
-    width: 60%;
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
 }
 .espace_info, .espace_reservation, .espace_modif {
     display: flex;
     flex-direction: column;
-    border-bottom: solid 1px white;
+    margin: 0px 10px 0px;
+}
+
+.separation {
+    margin: 20px 10px;
+    border: solid 2px white;
+    border-radius: 10px;
 }
 
 form {
@@ -31,7 +39,35 @@ input {
 }
 
 button {
-    margin: 10px auto 10px 0px;
-    width: auto; 
+    margin: 10px;
 }
 
+.lil_but {
+    width: 100px;
+    text-align: center;
+}
+
+/* tableau */
+table {
+    border-collapse: collapse;
+}
+th, td {
+    color: white;
+    border-top: solid 1px white;
+    border-bottom: solid 1px white;
+    padding: 5px 0px 5px;
+}
+
+td {
+    text-align: center;
+}
+
+@media screen and (min-width: 795px) {
+    .espace_user, .espace_admin {
+        width: 70%;
+    }
+    /* tableau */
+    table {
+        font-size: 20px;
+    }
+}

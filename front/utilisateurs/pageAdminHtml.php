@@ -1,4 +1,5 @@
 <?php
+include "../../src/pdo.php";
 include "../../src/liens_nav.php";
 include "../../src/verifCo.php";
 include "../../src/entities/Admin.php";
@@ -22,7 +23,8 @@ if(!isset($_SESSION['admin'])) {
 <html lang="fr">
     <head>
         <meta charset="utf-8"/>
-        <title></title>
+        <title>Page Admin</title>
+        <meta name="description" content="Page d'administration du site."/>
         <link rel="stylesheet" type="text/css" href="../../public/css/header&footer.css"> 
         <link rel="stylesheet" type="text/css" href="../../public/css/profil.css">
     </head>
@@ -74,7 +76,7 @@ if(!isset($_SESSION['admin'])) {
                         <form action="../../src/adminFunc/adminForms.php" method="post">
                             <label for="nombre_couverts">Indiquez le nouveau nombre de couverts :</label>
                             <input type="number" id="nombre_couverts" name="couv_max" min="1" required>
-                            <button type="submit">Modifier</button>
+                            <button class="lil_but" type="submit">Modifier</button>
                         </form>
                     </div>
                     <p class="message">
@@ -92,6 +94,8 @@ if(!isset($_SESSION['admin'])) {
                     </p> 
                 </div>
 
+                <div class="separation"></div>
+
                 <div class="espace_modif photos">
                     <div class="form"> 
                         <h3>Photos en page d'accueil</h3>
@@ -107,7 +111,7 @@ if(!isset($_SESSION['admin'])) {
 
                             <label for="id_photo">Numéro de la photo à remplacer:</label>
                             <input type="number" id="id_photo" name="id_photo" min="1" max="6" required>
-                            <button type="submit">Modifier</button>
+                            <button class="lil_but" type="submit">Modifier</button>
                         </form>
                     </div>
 
@@ -126,11 +130,13 @@ if(!isset($_SESSION['admin'])) {
                     </p>
                 </div>
 
+                <div class="separation"></div>
+
                 <div class="espace_modif horaires">
                     <div class="form">
                         <h3>Horaires</h3>
                         
-                        <form action="../../src/adminFunc/adminForms.php" method="post">
+                        <form class="lit_but" action="../../src/adminFunc/adminForms.php" method="post">
                             <label for="dej_ouverture">ouverture dejeuner:</label>
                             <input type="text" id="dej_ouverture" name="dej_ouverture" placeholder="00h00" required>
 
@@ -142,7 +148,7 @@ if(!isset($_SESSION['admin'])) {
 
                             <label for="dej_fermeture">fermeture diner:</label>
                             <input type="text" id="din_fermeture" name="din_fermeture" placeholder="00h00" required>
-                            <button type="submit">Modifier</button>
+                            <button class="lil_but" type="submit">Modifier</button>
                         </form>
                     </div>
 
@@ -161,9 +167,11 @@ if(!isset($_SESSION['admin'])) {
                     </p>
                 </div>
 
+                <div class="separation"></div>
+
                 <div class="espace_de">
                     <form action="../../src/formulaires/deconnexion.php" method="post">
-                        <button type="submit">Déconnexion</button>
+                        <button class="lil_but" type="submit">Déconnexion</button>
                     </form>
                 </div>
             </div>

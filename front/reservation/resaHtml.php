@@ -1,4 +1,5 @@
 <?php
+include "../../src/pdo.php";
 include "../../src/liens_nav.php";
 include "../../src/verifCo.php";
 include "../../src/entities/User.php";
@@ -27,7 +28,8 @@ if(isset($_SESSION['user'])) {
     <head>
 
         <meta charset="utf-8"/>
-        <title>Réservation</title>
+        <title>Réservation - Quai Antique</title>
+        <meta name="description" content="Page de réservation de notre restaurant Quai Antique, d'ici vous pouvez réserver une table pour le déjeuner ou le dîner."/>
         <link rel="stylesheet" type="text/css" href="../../public/css/header&footer.css">
         <link rel="stylesheet" type="text/css" href="../../public/css/resa.css">
 
@@ -148,14 +150,14 @@ if(isset($_SESSION['user'])) {
                     <button type="submit">Réserver</button>
                 </div>
 
-                <p class="message">
+                <p class="smserror">
                         <?php
                         // Vérification de l'existence du message dans la session
                         if (isset($_SESSION['message_error'])) {
                             // Stocker le message dans une variable temporaire
-                            $messageCouvert = $_SESSION['message_error'];                                    
+                            $messageError = $_SESSION['message_error'];                                    
                             // Afficher le message
-                            echo $messageCouvert;
+                            echo $messageError;
                             // Supprimer le message
                             unset($_SESSION['message_error']);
                         }

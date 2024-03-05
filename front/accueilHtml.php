@@ -1,9 +1,8 @@
 <?php
+include "../src/pdo.php";
 include "../src/liens_nav.php";
 include "../src/verifCo.php";
 include "../src/adminFunc/dataRecup.php";
-
-$pdo = new PDO('mysql:host=localhost;dbname=db_quaiantique', 'root', '');
 
 //récupération des infos photos
 $photoStatement = $pdo->prepare('SELECT * FROM `photos`');
@@ -19,7 +18,8 @@ if($photoStatement->rowCount() == 6) {
     <head>
 
         <meta charset="utf-8"/>
-        <title>Quai Antique-Accueil</title>
+        <title>Accueil - Quai Antique</title>
+        <meta name="description" content="Page d'accueil du site de notre restaurant Quai Antique, d'ici vous pouvez aller vers les autres services du site: connection, inscription, carte, réservation..."/>
         <link rel="stylesheet" type="text/css" href="../public/css/header&footer.css">
         <link rel="stylesheet" type="text/css" href="../public/css/accueil.css">
 

@@ -1,9 +1,7 @@
 <?php
+include "../../src/pdo.php";
 include '../entities/User.php';
 include 'NbPersTransformer.php';
-
-// Connexion à la base de données
-$pdo = new PDO('mysql:host=localhost;dbname=db_quaiantique', 'root', '');
 
 // Récupération des données du formulaire
 $genre = $_POST['genre'];
@@ -58,13 +56,13 @@ $statement = $pdo->prepare($insertUser);
             header('Location: ../../front/utilisateurs/compteHtml.php');
         } else {
             //erreur d'insertion
-            $_SESSION['message_error'] = "echo 'L'inscription a échoué.';";
+            $_SESSION['message_error'] = "L'inscription a échoué.";
             session_write_close();
             header('Location: ../../front/identifiant/inscriptionHtml.php');
         }
     } else {
         //erreur d'insertion
-        $_SESSION['message_error'] = "echo 'L'inscription a échoué.';";
+        $_SESSION['message_error'] = "L'inscription a échoué.";
         session_write_close();
         header('Location: ../../front/identifiant/inscriptionHtml.php');
     }

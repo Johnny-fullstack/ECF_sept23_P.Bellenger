@@ -1,10 +1,10 @@
 <?php
+include "../../src/pdo.php";
+
 if (session_status() == PHP_SESSION_NONE) {
     // Si la session n'est pas déjà démarrée, on la démarre
     session_start();
 }
-
-$pdo = new PDO('mysql:host=localhost;dbname=db_quaiantique', 'root', '');
 
 //traitement du formulaire admin changeant le nombre de couvert maximum
 if  (isset($_POST['couv_max'])) {

@@ -1,4 +1,6 @@
 -- base de données : `db_quaiantique`
+SET CHARACTERE utf8;
+SET NAMES utf8;
 
 -- Structure de la table `admin`
 

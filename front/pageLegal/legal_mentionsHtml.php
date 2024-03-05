@@ -8,9 +8,9 @@ include "../../src/adminFunc/dataRecup.php";
     <head>
 
         <meta charset="utf-8"/>
-        <title>Quai Antique-Mentions Legals</title>
+        <title>Mentions Legales</title>
+        <meta name="description" content="Page des mentions légales concernant l'hebergeur du site Quai Antique."/>
         <link rel="stylesheet" type="text/css" href="../../public/css/header&footer.css">
-        <link rel="stylesheet" type="text/css" href="../../public/css/accueil.css">
 
     </head>
 
@@ -53,27 +53,31 @@ include "../../src/adminFunc/dataRecup.php";
             </header>
 
             <main>
-            <h2>Herbergeur web</h2>
+                <h2>Mentions Légales</h2>
 
-            <h3>Informations sur l'hébergeur :</h3>               
-            <ul>
-                <li>Nom complet de l'hébergeur: OVHcloud SAS</li>
-            <li>Raison sociale: OVHcloud</li>
-                <li>Adresse: 2 rue Kellermann - 59100 Roubaix - France</li>
-                <li>Numéro de téléphone: +33 9 72 10 10 07</li>
-            </ul>
+                <div class="blackdiv">
+                    <h2>Herbergeur web</h2>
 
-            <h3>Informations relatives à l'hébergement :</h3>
-            <ul>                             
-                <li>Nom du responsable technique: Octave Klaba</li>
-                <li>Adresse du responsable technique: 2 rue Kellermann - 59100 Roubaix - France</li>
-            </ul>
+                    <h3>Informations sur l'hébergeur :</h3>               
+                    <ul>
+                        <li>Nom complet de l'hébergeur: OVHcloud SAS</li>
+                        <li>Raison sociale: OVHcloud</li>
+                        <li>Adresse: 2 rue Kellermann - 59100 Roubaix - France</li>
+                        <li>Numéro de téléphone: +33 9 72 10 10 07</li>
+                    </ul>
 
-            <h3>Liens utiles :</h3>
-            <ul>
-                <li><a href="//us.ovhcloud.com/legal/terms-of-service/">Lien vers les mentions légales d'OVHcloud</a></li>
-                <li><a href="https://www.ovhcloud.com/fr/terms-and-conditions/contracts/"> vers les conditions générales d'utilisation d'OVHcloud</a></li> 
-            </ul>
+                    <h3>Informations relatives à l'hébergement :</h3>
+                    <ul>                             
+                        <li>Nom du responsable technique: Octave Klaba</li>
+                        <li>Adresse du responsable technique: 2 rue Kellermann - 59100 Roubaix - France</li>
+                    </ul>
+
+                    <h3>Liens utiles :</h3>
+                    <ul>
+                        <li><a href="//us.ovhcloud.com/legal/terms-of-service/">Lien vers les mentions légales d'OVHcloud</a></li>
+                        <li><a href="https://www.ovhcloud.com/fr/terms-and-conditions/contracts/"> vers les conditions générales d'utilisation d'OVHcloud</a></li> 
+                    </ul>
+                </div>
             </main>
             
             <footer>

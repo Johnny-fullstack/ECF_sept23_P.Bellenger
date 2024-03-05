@@ -1,11 +1,16 @@
 <?php
+include "../../src/pdo.php";
 include '../entities/User.php';
 include '../entities/Admin.php';
+
+if (session_status() == PHP_SESSION_NONE) {
+    // Si la session n'est pas déjà démarrée, on la démarre
+    session_start();
+}
 
 $mail = htmlspecialchars($_POST['mail']);
 $password = htmlspecialchars($_POST['password']);
 
-$pdo = new PDO('mysql:host=localhost;dbname=db_quaiantique', 'root', '');
 $adminStatement = $pdo->prepare('SELECT * FROM `admin` WHERE `email` = :mail');
 $userStatement = $pdo->prepare('SELECT * FROM `user` WHERE `email` = :mail');
 
@@ -24,7 +29,7 @@ if ($userStatement->execute()) {
             $admin = $adminStatement->fetch(PDO::FETCH_ASSOC); // Récupère l'admin ayant le même mail
             if ($admin === false) {
                 //aucun mail correspondant
-                $_SESSION['message_couvert'] = "L'adresse mail n'existe pas";
+                $_SESSION['message_error'] = "L'adresse mail n'existe pas";
                 session_write_close();
                 header('Location: ../../front/identifiant/connexionHtml.php');
             } else { 
@@ -49,16 +54,16 @@ if ($userStatement->execute()) {
                     header('Location: ../../front/utilisateurs/pageAdminHtml.php');
                 } else {
                     // erreur mot de passe admin
-                    $_SESSION['message_couvert'] = "Le mot de passe n'est pas correct.";
+                    $_SESSION['message_error'] = "Le mot de passe n'est pas correct.";
                     session_write_close();
-                    header('Location: ../../front/utilisateurs/connexionHtml.php');
+                    header('Location: ../../front/identifiant/connexionHtml.php');
                 }
             }
         } else {
                 // erreur mail user
-                $_SESSION['message_couvert'] = "L'adresse mail n'existe pas";
+                $_SESSION['message_error'] = "L'adresse mail n'existe pas";
                 session_write_close();
-                header('Location: ../../front/utilisateurs/connexionHtml.php');
+                header('Location: ../../front/identifiant/connexionHtml.php');
             }
 
     } else {
@@ -84,14 +89,16 @@ if ($userStatement->execute()) {
             header('Location: ../../front/utilisateurs/compteHtml.php');
         } else {
             // erreur mot de passe
-            $_SESSION['message_couvert'] = "Le mot de passe n'est pas correct.";
+            $_SESSION['message_error'] = "Le mot de passe n'est pas correct.";
             session_write_close();
-            header('Location: ../../front/utilisateurs/connexionHtml.php');
+            header('Location: ../../front/identifiant/connexionHtml.php');
         }
     }
 } else {
     // erreur execution requête
-    header('Location: ../../front/utilisateurs/erreurInsertHtml.php');
+    $_SESSION['message_error'] = "La connexion à échoué.";
+    session_write_close();
+    header('Location: ../../front/identifiant/connexionHtml.php');
 }
 
 

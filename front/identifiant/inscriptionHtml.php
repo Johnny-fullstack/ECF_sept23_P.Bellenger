@@ -1,4 +1,5 @@
 <?php
+include "../../src/pdo.php";
 include "../../src/liens_nav.php";
 include "../../src/adminFunc/dataRecup.php";
 
@@ -13,6 +14,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
         <meta charset="utf-8"/>
         <title>Inscription</title>
+        <meta name="description" content="Page d'inscription à notre site."/>
         <link rel="stylesheet" type="text/css" href="../../public/css/header&footer.css">
         <link rel="stylesheet" type="text/css" href="../../public/css/connexion.css">
     </head>
@@ -108,7 +110,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         </div>           
                     </div>
 
-                    <p class="message">
+                    <p class="smserror">
                         <?php
                         // Vérification de l'existence du message dans la session
                         if (isset($_SESSION['message_error'])) {

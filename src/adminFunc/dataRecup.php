@@ -1,10 +1,15 @@
 <?php
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$database = 'db_quaiantique';
+
+$pdo = new PDO("mysql:host=$host;dbname=$database", $username, $password);
+
 if (session_status() == PHP_SESSION_NONE) {
     // Si la session n'est pas déjà démarrée, on la démarre
     session_start();
 }
-
-$pdo = new PDO('mysql:host=localhost;dbname=db_quaiantique', 'root', '');
 
 //récupération du nombre de couvert maximum actuel
 $couvertTotalStatement = $pdo->prepare('SELECT `couverts_total` FROM `couverts` WHERE `id` = 1');

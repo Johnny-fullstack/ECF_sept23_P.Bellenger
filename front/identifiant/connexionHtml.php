@@ -1,6 +1,12 @@
 <?php
+include "../../src/pdo.php";
 include "../../src/liens_nav.php";
 include "../../src/adminFunc/dataRecup.php";
+
+if (session_status() == PHP_SESSION_NONE) {
+    // Si la session n'est pas déjà démarrée, on la démarre
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -8,6 +14,7 @@ include "../../src/adminFunc/dataRecup.php";
 
         <meta charset="utf-8"/>
         <title>Connexion</title>
+        <meta name="description" content="Page de connexion à votre espace client."/>
         <link rel="stylesheet" type="text/css" href="../../public/css/header&footer.css">
         <link rel="stylesheet" type="text/css" href="../../public/css/connexion.css">
     </head>
@@ -18,7 +25,7 @@ include "../../src/adminFunc/dataRecup.php";
             <a class="txtnavleft" href="<?php echo $lienAccueil?>">Revenir à la page d'Accueil</a>
         </nav>
 
-        <main class="main_co">
+        <main class="main">
 
                 <form method="post" action="../../src/formulaires/connexion.php">
                     <h2>Connexion</h2>
@@ -38,14 +45,14 @@ include "../../src/adminFunc/dataRecup.php";
                             <a href="<?php echo $lienInscription?>">Je ne suis pas inscris</a>
                         </div>                   
                        
-                        <p class="message">
+                        <p class="smserror">
                         <?php
                         // Vérification de l'existence du message dans la session
                         if (isset($_SESSION['message_error'])) {
                             // Stocker le message dans une variable temporaire
-                            $messageCouvert = $_SESSION['message_error'];                                    
+                            $messageError = $_SESSION['message_error'];                                    
                             // Afficher le message
-                            echo $messageCouvert;
+                            echo $messageError;
                             // Supprimer le message
                             unset($_SESSION['message_error']);
                         }

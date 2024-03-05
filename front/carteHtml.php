@@ -1,4 +1,5 @@
 <?php
+include "../src/pdo.php";
 include "../src/liens_nav.php";
 include "../src/verifCo.php";
 include "../src/adminFunc/dataRecup.php";
@@ -8,7 +9,8 @@ include "../src/adminFunc/dataRecup.php";
     <head>
 
         <meta charset="utf-8"/>
-        <title>Notre carte</title>
+        <title>Notre carte - Quai Antique</title>
+        <meta name="description" content="Page de la carte du restaurant, présentant les entrées, les plats, les desserts, ainsi que les formages, les boissons et nos menus."/>
         <link rel="stylesheet" type="text/css" href="../public/css/header&footer.css">
         <link rel="stylesheet" type="text/css" href="../public/css/carte.css">
 
@@ -215,7 +217,7 @@ include "../src/adminFunc/dataRecup.php";
                                 <p class="grid_prix">29.90€</p>
 
                                 <p>
-                                    Menu Raclette 1 à 6 pers</li>br>
+                                    Menu Raclette 1 à 6 pers</li></br>
                                     <em>charcuterie+raclette+salade+dessert</em>
                                 </p>
 
