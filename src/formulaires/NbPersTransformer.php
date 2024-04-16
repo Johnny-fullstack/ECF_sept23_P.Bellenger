@@ -2,7 +2,7 @@
 
 class NbPersTransformer
 {
-    public static function transform($value)
+    public static function transform($value) : string
     {
        
         switch ($value) {
@@ -23,7 +23,7 @@ class NbPersTransformer
         }
     }
 
-    public static function reverseTransform($value)
+    public static function reverseTransform($value) : int
     {
         
         switch ($value) {
@@ -40,7 +40,7 @@ class NbPersTransformer
             case '6pers':
                 return 6;
             default:
-                return null;
+                return 0;
         }
     }
 }

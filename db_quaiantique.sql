@@ -101,7 +101,7 @@ CREATE TABLE `photos` (
 
 INSERT INTO `roles` (`nom`) VALUES ('user_role');
 INSERT INTO `roles` (`nom`) VALUES ('admin_role');
-INSERT INTO `admin` (`username`, `email`, `password`) VALUES ('Admin', 'admin@mail.com', MD5('administeur'));
+INSERT INTO `admin` (`username`, `email`, `password`) VALUES ('Admin', 'admin@mail.com', SHA2('administeur', 256));
 INSERT INTO `admin_role` (`admin_id`, `role_id`) VALUES (LAST_INSERT_ID(), 2);
 
 INSERT INTO `couverts` (`couverts_total`) VALUES ('20');

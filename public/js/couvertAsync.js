@@ -81,7 +81,8 @@ async function couvertsRestant(date, periode, nbCouverts) {
             document.getElementById('places_restantes').innerHTML = "il reste " + data + " couverts pour ces horaires";
             affichHeure();
         } else if(data - nbCouverts < 0) {
-            document.getElementById('places_restantes').innerHTML = "Nous sommes désolé, il semble que nous n'avons plus assez de place pour le nombre de couverts demandé. Essayez un autre jour ou une autre période de la journée."
+            document.getElementById('places_restantes').innerHTML = "Nous sommes désolé, il semble que nous n'avons plus assez de place pour le nombre de couverts demandé. Essayez un autre jour ou une autre période de la journée.";
+            viderContenu()
         }
     } catch (error) {
         //erreur de try
@@ -99,4 +100,8 @@ function affichHeure() {
         '<div class="radio"><input type="radio" id="19h30" name="heure_diner" value="19h30"><label for="19h30">19h30</label></div> <div class="radio"><input type="radio" id="19h45" name="heure_diner" value="19h45"><label for="19h45">19h45</label></div> <div class="radio"><input type="radio" id="20h00" name="heure_diner" value="20h00"><label for="20h00">20h00</label></div> <div class="radio"><input type="radio" id="20h15" name="heure_diner" value="20h15"><label for="20h15">20h15</label></div> <div class="radio"><input type="radio" id="20h30" name="heure_diner" value="20h30"><label for="20h30">20h30</label></div> <div class="radio"><input type="radio" id="20h45" name="heure_diner" value="20h45"><label for="20h45">20h45</label></div> <div class="radio"><input type="radio" id="21h00" name="heure_diner" value="21h00"><label for="21h00">21h00</label></div> <div class="radio"><input type="radio" id="21h15" name="heure_diner" value="21h15"><label for="21h15">21h15</label></div> <div class="radio"><input type="radio" id="21h30" name="heure_diner" value="21h30"><label for="21h30">21h30</label></div> ';
         heure.classList.add('active');    
         }
+}
+
+function viderContenu() {
+    heure.innerHTML = '';
 }

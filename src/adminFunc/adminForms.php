@@ -63,7 +63,7 @@ if (isset($_FILES['photo'])) {
     
 } else {
     //erreur de téléchargment du fichier
-    $_SESSION['message_photo'] = "Le téléchargement de votre image a échoué.";
+    $_SESSION['message_photo'] = "auncune image n'a été fourni.";
     session_write_close();
     header('Location: ../../front/utilisateurs/pageAdminHtml.php');
 }

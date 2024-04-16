@@ -16,7 +16,6 @@ if(!isset($_SESSION['admin'])) {
     exit();
 } else if(isset($_SESSION['admin'])) {
     $adminInfo = $_SESSION['admin'];
-    
 }  
 ?>
 <!DOCTYPE html>
