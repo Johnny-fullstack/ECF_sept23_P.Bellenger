@@ -3,6 +3,10 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+.bodyconf {
+    height: 100%;
+}
    
 main {
     background-image: url('../Images/gastronomie-savoyarde 1.jpg');

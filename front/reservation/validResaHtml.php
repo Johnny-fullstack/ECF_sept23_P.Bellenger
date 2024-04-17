@@ -50,7 +50,7 @@ if (isset($_SESSION['resa'])) {
 session_write_close();
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="bodyconf">
     <head>
 
         <meta charset="utf-8"/>
@@ -60,7 +60,7 @@ session_write_close();
 
     </head>
 
-    <body class="body">
+    <body class="bodyconf">
         
             <header>
 
